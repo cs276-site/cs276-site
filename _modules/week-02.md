@@ -2,8 +2,8 @@
 title: Week 2
 ---
 
-T Sept 10
+T 9/10
 : 
 
-Th Sept 12
+Th 9/12
 : 
