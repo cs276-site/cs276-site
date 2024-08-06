@@ -5,7 +5,7 @@ nav_exclude: false
 permalink: /:path/
 seo:
   type: Course
-  name: CS 171
+  name: CS 171 - Test
 ---
 
 <style>
