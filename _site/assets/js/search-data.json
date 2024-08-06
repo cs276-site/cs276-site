@@ -1,0 +1,366 @@
+{"0": {
+    "doc": "Home",
+    "title": "Welcome to CS 171!",
+    "content": " ",
+    "url": "/",
+    
+    "relUrl": "/"
+  },"1": {
+    "doc": "Home",
+    "title": "Week 1",
+    "content": "Jan 17 Lecture Introduction. Private-key cryptography. The syntax of private-key encryption. Historical ciphers and Their Cryptanalysis. KL 1.1-1.3 ",
+    "url": "/#week-1",
+    
+    "relUrl": "/#week-1"
+  },"2": {
+    "doc": "Home",
+    "title": "Week 2",
+    "content": "Jan 22 Lecture Principles of Modern Cryptography. Modern cryptography: definitions, assumptions, and proofs. Defining Perfectly Secure Encryption. KL 1.4 and 2.1 Discussion Discussion 1 Solution Jan 23 Homework Homework 1 LaTeX, Solution Jan 24 Lecture Game-Based Definition for Encryption. The one-time pad. Limitations of perfect secrecy. A computational notion of security. KL 2.2-2.3, 3.1, and 3.2.1 ",
+    "url": "/#week-2",
+    
+    "relUrl": "/#week-2"
+  },"3": {
+    "doc": "Home",
+    "title": "Week 3",
+    "content": "Jan 29 Lecture Pseudorandomness. The pseudo-OTP. Proofs by reduction, and a proof of security for the pseudo-OTP. KL 3.3 Discussion Discussion 2 Solution Jan 30 Homework Homework 2 Q3 Starter Code, LaTeX, Note On Negligible Functions, Solution Jan 31 Lecture Security for multiple encryptions. Drawbacks of deterministic encryption. Chosen-plaintext attacks and CPA-security. Pseudorandom Functions. CPA Secure Encryption from Pseudorandom Functions KL 3.4 and 3.5 ",
+    "url": "/#week-3",
+    
+    "relUrl": "/#week-3"
+  },"4": {
+    "doc": "Home",
+    "title": "Week 4",
+    "content": "Feb 5 Lecture Encryption from stream ciphers and block ciphers. Chosen-Ciphertext Attacks. Hybrid Arguments. KL 3.6 and 3.7 Discussion Discussion 3 Solution Feb 6 Homework Homework 3 LaTeX, Solution Feb 7 Lecture Practical constructions of stream ciphers. Substitution-permutation networks KL 6.1 and 6.2.1 ",
+    "url": "/#week-4",
+    
+    "relUrl": "/#week-4"
+  },"5": {
+    "doc": "Home",
+    "title": "Week 5",
+    "content": "Feb 12 Lecture Practical constructions of block ciphers. Substitution-permutation networks (SPNs). Fiestel Networks. The data encryption standard (DES). KL 6.2.1, 6.2.2, 6.2.3, and 6.2.4. Discussion Discussion 4 Solution Feb 14 Midterm Midterm I Solution ",
+    "url": "/#week-5",
+    
+    "relUrl": "/#week-5"
+  },"6": {
+    "doc": "Home",
+    "title": "Week 6",
+    "content": "Feb 19 No Class (President’s Day) Discussion Discussion 5 (reviewed midterm 1) Midterm 1 Solution Feb 20 Homework Homework 4 LaTeX, Solution Feb 21 Lecture Message integrity and message authentication codes (MACs). Defining security for MACs. Constructing MACs. KL 4.1, 4.2, 4.3 and 4.4.1 ",
+    "url": "/#week-6",
+    
+    "relUrl": "/#week-6"
+  },"7": {
+    "doc": "Home",
+    "title": "Week 7",
+    "content": "Feb 26 Lecture Authenticated encryption and CCA-security. KL 4.5.1, and 4.5.2 (no proof), 4.5.3, 4.5.4 Discussion Discussion 6 Solution Feb 27 Homework Homework 5 LaTeX, Solution Feb 28 Lecture Hash functions and collision resistance. Birthday attacks on hash functions. Additional applications of hash functions. KL 5.1.1, 5.2, 5.3.1, 5.4.1, and 5.6.1-5.6.3 ",
+    "url": "/#week-7",
+    
+    "relUrl": "/#week-7"
+  },"8": {
+    "doc": "Home",
+    "title": "Week 8",
+    "content": "Mar 4 Lecture One-Way Functions and Implications KL 7.1, 7.2, 7.3.1, 7.4, 7.5, and 7.7 Discussion Discussion 7 Solution Mar 5 Homework Homework 6 LaTeX, Solution Mar 6 Lecture Groups. Hardness assumptions in cyclic groups: the discrete-logarithm assumption and Diffie-Hellman problems. Hash Functions Construction. The Diffie-Hellman key-exchange protocol. KL 8.1.1-8.1.2 (self-study), 8.1.3, 8.3.1-8.3.3, 8.4.2, and 10 ",
+    "url": "/#week-8",
+    
+    "relUrl": "/#week-8"
+  },"9": {
+    "doc": "Home",
+    "title": "Week 9",
+    "content": "Mar 11 Lecture Public-key encryption: syntax and definitions of security. El Gamal encryption. Definitions of security for public-key encryption. KL 11.1 11.2, 11.4.1, and 11.4.4 (only the discussion that El Gamal encryption is malleable). Discussion Discussion 8 Solution Mar 12 Homework Homework 7 LaTeX, Solution Mar 13 Lecture Hybrid encryption and the KEM/DEM paradigm. El Gamal encryption. Composite Order Groups. RSA Encryption 11.3 (skip proof of Theorem 11.12), 11.4.2, and 11.5.1 Mar 15 Midterm Review Session Slides, Recording ",
+    "url": "/#week-9",
+    
+    "relUrl": "/#week-9"
+  },"10": {
+    "doc": "Home",
+    "title": "Week 10",
+    "content": "Mar 18 Lecture Review for Midterm II Mar 20 Midterm Midterm II Solution, Example Answers ",
+    "url": "/#week-10",
+    
+    "relUrl": "/#week-10"
+  },"11": {
+    "doc": "Home",
+    "title": "Week 11",
+    "content": "Mar 25 Spring Break Mar 27 Spring Break ",
+    "url": "/#week-11",
+    
+    "relUrl": "/#week-11"
+  },"12": {
+    "doc": "Home",
+    "title": "Week 12",
+    "content": "Apr 1 Lecture Digital signatures. The hash-and-sign paradigm. Schnorr Signature Scheme. Certificates and public-key infrastructures. KL 12.1-12.3, 12.5.1 and 12.7 Discussion Discussion 9 Solution Apr 2 Homework Homework 8 LaTeX, Solution Apr 3 Lecture Pairings, Identity Based Encryption, CCA Secure Public-Key Encryption Boneh &amp; Shoup, Chapter 15 ",
+    "url": "/#week-12",
+    
+    "relUrl": "/#week-12"
+  },"13": {
+    "doc": "Home",
+    "title": "Week 13",
+    "content": "Apr 8 Lecture Commitment Schemes Special Topics Discussion Discussion 10 Solution Apr 9 Homework Homework 9 Q3 Starter Code, LaTeX, Solution Apr 10 Lecture Zero-Knowledge Proofs Supplemental Materials ",
+    "url": "/#week-13",
+    
+    "relUrl": "/#week-13"
+  },"14": {
+    "doc": "Home",
+    "title": "Week 14",
+    "content": "Apr 15 Lecture Zero-Knowledge Proofs Supplemental Materials Discussion Discussion 11 Solution Apr 17 Homework Homework 10 LaTeX, Solution Apr 17 Lecture Succinct Proofs Special Topics ",
+    "url": "/#week-14",
+    
+    "relUrl": "/#week-14"
+  },"15": {
+    "doc": "Home",
+    "title": "Week 15",
+    "content": "Apr 22 Lecture Secret Sharing Special Topics Discussion Discussion 12 Solution Apr 24 Lecture Multiparty computation and review for final exam Special Topics ",
+    "url": "/#week-15",
+    
+    "relUrl": "/#week-15"
+  },"16": {
+    "doc": "Home",
+    "title": "Week 17",
+    "content": "May 7 Final Exam Exam Solution ",
+    "url": "/#week-17",
+    
+    "relUrl": "/#week-17"
+  },"17": {
+    "doc": "Home",
+    "title": "Home",
+    "content": " ",
+    "url": "/",
+    
+    "relUrl": "/"
+  },"18": {
+    "doc": "About",
+    "title": "About",
+    "content": " ",
+    "url": "/about/",
+    
+    "relUrl": "/about/"
+  },"19": {
+    "doc": "About",
+    "title": "Table of contents",
+    "content": ". | About CS 276 | Prerequisites | Course Staff | Getting Started | . ",
+    "url": "/about/#table-of-contents",
+    
+    "relUrl": "/about/#table-of-contents"
+  },"20": {
+    "doc": "About",
+    "title": "About CS 276",
+    "content": "Cryptography enables encrypted communication, digital signatures, and verifiable computation, among other applications. In abstract terms, cryptography is the science of designing algorithms that enable secure communication and computation in an untrusted environment. Over the last four decades, cryptography has transformed from an ad hoc collection of mysterious tricks into a rigorous science based on complexity theory. Modern cryptography emphasizes precise mathematical definitions of security, and proofs of security that reduce to well-studied computational hardness assumptions. ",
+    "url": "/about/#about-cs-276",
+    
+    "relUrl": "/about/#about-cs-276"
+  },"21": {
+    "doc": "About",
+    "title": "Prerequisites",
+    "content": "We require CS 170 (Efficient Algorithms and Intractable Problems), and we recommend either CS 171 (Undergraduate Cryptography) or CS 161 (Computer Security). CS 171 is the precursor to our course, and we assume students are familiar with the content. In particular, students should be comfortable writing security proofs. ",
+    "url": "/about/#prerequisites",
+    
+    "relUrl": "/about/#prerequisites"
+  },"22": {
+    "doc": "About",
+    "title": "Course Staff",
+    "content": "Sanjam Garg . sanjamg@berkeley.edu . Bhaskar Roberts . bhaskarr@eecs.berkeley.edu . ",
+    "url": "/about/#course-staff",
+    
+    "relUrl": "/about/#course-staff"
+  },"23": {
+    "doc": "About",
+    "title": "Getting Started",
+    "content": ". | Join the course on Gradescope using entry code 2BKDD8. Gradescope is where you will submit your assignments and view your grades. | Join the Ed Discussion forum with this join link. You will need a berkeley.edu email address to join. Ed is where you can post and answer questions about the course. | If you have DSP accommodations, please have your accommodation letters sent to the instructors as soon as possible. Also, please email bhaskarr@berkeley.edu with any logistical questions. | . ",
+    "url": "/about/#getting-started",
+    
+    "relUrl": "/about/#getting-started"
+  },"24": {
+    "doc": "Announcements",
+    "title": "Announcements",
+    "content": "Announcements are stored in the _announcements directory and rendered according to the layout file, _layouts/announcement.html. ",
+    "url": "/announcements/",
+    
+    "relUrl": "/announcements/"
+  },"25": {
+    "doc": "Announcements",
+    "title": "Week 1 Announcement",
+    "content": "Apr 8 &middot; 0 min read . | Create a new repository based on Just the Class. | Configure a publishing source for GitHub Pages. Your course website is now live! | Update _config.yml with your course information. | Edit and create .md Markdown files to add your content. | . ",
+    "url": "/announcements/",
+    
+    "relUrl": "/announcements/"
+  },"26": {
+    "doc": "Announcements",
+    "title": "Week 0 Announcement",
+    "content": "Apr 1 &middot; 0 min read Hello world! . ",
+    "url": "/announcements/",
+    
+    "relUrl": "/announcements/"
+  },"27": {
+    "doc": "Assignments and Grading",
+    "title": "Assignments and Grading",
+    "content": " ",
+    "url": "/assignments-and-grading/",
+    
+    "relUrl": "/assignments-and-grading/"
+  },"28": {
+    "doc": "Assignments and Grading",
+    "title": "Table of contents",
+    "content": ". | Assignments | Collaboration | Cheating | Submission | Grading | . ",
+    "url": "/assignments-and-grading/#table-of-contents",
+    
+    "relUrl": "/assignments-and-grading/#table-of-contents"
+  },"29": {
+    "doc": "Assignments and Grading",
+    "title": "Assignments",
+    "content": "There will be two kinds of assignments: . | Problem sets: Assigned weekly | Reviews: After a problem set is due, you will be assigned to review another student’s submission and give feedback. You should indicate whether their solution is fully correct and if not, identify the details that are lacking or incorrect. Also indicate if their writing is unclear and give constructive feedback to help them improve. Other notes: your reviews should be respectful and kind. Also, your review can be short or long; the length doesn’t matter. | . ",
+    "url": "/assignments-and-grading/#assignments",
+    
+    "relUrl": "/assignments-and-grading/#assignments"
+  },"30": {
+    "doc": "Assignments and Grading",
+    "title": "Collaboration",
+    "content": "You are encouraged to collaborate on problem sets with fellow students, but you must write your solutions on your own and list all of your significant collaborators. You may collaborate with other students by explaining the meaning of a question, or exploring a potential approach to solving the question. However, you should never possess, read, or copy from another student’s exact solutions. Similarly, you may use books or online resources to help solve homework problems, but you should not copy solutions verbatim, and you must cite all your sources. ",
+    "url": "/assignments-and-grading/#collaboration",
+    
+    "relUrl": "/assignments-and-grading/#collaboration"
+  },"31": {
+    "doc": "Assignments and Grading",
+    "title": "Cheating",
+    "content": "Any student found to be cheating risks automatically failing the class and being referred to the Office of Student Conduct. ",
+    "url": "/assignments-and-grading/#cheating",
+    
+    "relUrl": "/assignments-and-grading/#cheating"
+  },"32": {
+    "doc": "Assignments and Grading",
+    "title": "Submission",
+    "content": ". | All assignments are due by 8:59 PM on the due date. | Late policy: Assignments submitted late will lose 5% for every hour that they are late. For example: if you submit 1 minute late, you lose 5%. If you submit 61 minutes late, you lose 10%. | . ",
+    "url": "/assignments-and-grading/#submission",
+    
+    "relUrl": "/assignments-and-grading/#submission"
+  },"33": {
+    "doc": "Assignments and Grading",
+    "title": "Grading",
+    "content": ". | Assignments will largely be graded on completeness. A submission will receive full credit if it attempts every problem and gets most of the details correct. | Drop policy: We will drop your lowest 2 problem set scores. | Your final letter grade will not depend on how you rank relative to other students. | . ",
+    "url": "/assignments-and-grading/#grading",
+    
+    "relUrl": "/assignments-and-grading/#grading"
+  },"34": {
+    "doc": "Inclusion and Support",
+    "title": "Inclusion and Support",
+    "content": "We are committed to creating a learning environment that is inclusive and supportive of all students. If you need additional support, please let us know how we can help and make use of the resources below. ",
+    "url": "/inclusion-and-support/",
+    
+    "relUrl": "/inclusion-and-support/"
+  },"35": {
+    "doc": "Inclusion and Support",
+    "title": "Table of contents",
+    "content": ". | Preferred Name and Pronouns | Disabled Students’ Program (DSP) | Faculty Equity Advisor | Center for Access to Engineering Excellence (CAEE) | Counseling and Psychological Services | The Care Line (PATH to Care Center) | Ombudsperson for Students | UC Berkeley Food Pantry | . ",
+    "url": "/inclusion-and-support/#table-of-contents",
+    
+    "relUrl": "/inclusion-and-support/#table-of-contents"
+  },"36": {
+    "doc": "Inclusion and Support",
+    "title": "Preferred Name and Pronouns",
+    "content": "If you have a name and/or set of pronouns that differ from your legal name, designate a preferred name for use in the classroom here. ",
+    "url": "/inclusion-and-support/#preferred-name-and-pronouns",
+    
+    "relUrl": "/inclusion-and-support/#preferred-name-and-pronouns"
+  },"37": {
+    "doc": "Inclusion and Support",
+    "title": "Disabled Students’ Program (DSP)",
+    "content": "The Disabled Student’s Program (260 César Chávez Student Center #4250; 510-642-0518; http://dsp.berkeley.edu) serves students with disabilities of all kinds. Services are individually designed and based on the specific needs of each student as identified by DSP’s Specialists. If you have already been approved for accommodations through DSP, please know that DSP is ready to quickly adjust your accommodations if your situation changes. We encourage DSP students to have their accommodation letters sent to the instructor within the first two weeks of class. Additionally, please send emails to bhaskarr@berkeley.edu for logistics on homework submissions. ",
+    "url": "/inclusion-and-support/#disabled-students-program-dsp",
+    
+    "relUrl": "/inclusion-and-support/#disabled-students-program-dsp"
+  },"38": {
+    "doc": "Inclusion and Support",
+    "title": "Faculty Equity Advisor",
+    "content": "If you feel that your performance in the class is being impacted by a lack of inclusion, please contact the instructors, your ESS advisor, or the departmental Faculty Equity Advisor (list and information here). An anonymous feedback form is also available here. ",
+    "url": "/inclusion-and-support/#faculty-equity-advisor",
+    
+    "relUrl": "/inclusion-and-support/#faculty-equity-advisor"
+  },"39": {
+    "doc": "Inclusion and Support",
+    "title": "Center for Access to Engineering Excellence (CAEE)",
+    "content": "The Center for Access to Engineering Excellence (227 Bechtel Engineering Center; https://engineering.berkeley.edu/student-services/academic-support) is an inclusive center that offers study spaces, nutritious snacks, and tutoring in &gt;50 courses for Berkeley engineers and other majors across campus. The Center also offers a wide range of professional development, leadership, and wellness programs, and loans iclickers, laptops, and professional attire for interviews. ",
+    "url": "/inclusion-and-support/#center-for-access-to-engineering-excellence-caee",
+    
+    "relUrl": "/inclusion-and-support/#center-for-access-to-engineering-excellence-caee"
+  },"40": {
+    "doc": "Inclusion and Support",
+    "title": "Counseling and Psychological Services",
+    "content": "University Health Services Counseling and Psychological Services staff are available to you at the Tang Center (http://uhs.berkeley.edu; 2222 Bancroft Way; 510-642-9494) and in the College of Engineering (https://engineering.berkeley.edu/students/advising-counseling/counseling/; 241 Bechtel Engineering Center), and provide confidential assistance to students managing problems that can emerge from illness such as financial, academic, legal, family concerns, and more. Long wait times at the Tang Center in the past led to a significant expansion to include a 24/7 counseling line at (855) 817-5667. This line will connect you with help in a very short time-frame. Short-term help is also available from the Alameda County Crisis hotline: 800-309-2131. If you or someone you know is experiencing an emergency that puts their health at risk, please call 911. ",
+    "url": "/inclusion-and-support/#counseling-and-psychological-services",
+    
+    "relUrl": "/inclusion-and-support/#counseling-and-psychological-services"
+  },"41": {
+    "doc": "Inclusion and Support",
+    "title": "The Care Line (PATH to Care Center)",
+    "content": "The Care Line (510-643-2005; https://care.berkeley.edu/care-line/) is a 24/7, confidential, free, campus-based resource for urgent support around sexual assault, sexual harassment, interpersonal violence, stalking, and invasion of sexual privacy. The Care Line will connect you with a confidential advocate for trauma-informed crisis support including time-sensitive information, securing urgent safety resources, and accompaniment to medical care or reporting. ",
+    "url": "/inclusion-and-support/#the-care-line-path-to-care-center",
+    
+    "relUrl": "/inclusion-and-support/#the-care-line-path-to-care-center"
+  },"42": {
+    "doc": "Inclusion and Support",
+    "title": "Ombudsperson for Students",
+    "content": "The Ombudsperson for Students (102 Sproul Hall; 642-5754; http://students.berkeley.edu/Ombuds) provides a confidential service for students involved in a University-related problem (academic or administrative), acting as a neutral complaint resolver and not as an advocate for any of the parties involved in a dispute. The Ombudsman can provide information on policies and procedures affecting students, facilitate students’ contact with services able to assist in resolving the problem, and assist students in complaints concerning improper application of University policies or procedures. All matters referred to this office are held in strict confidence. The only exceptions, at the sole discretion of the Ombudsman, are cases where there appears to be imminent threat of serious harm. ",
+    "url": "/inclusion-and-support/#ombudsperson-for-students",
+    
+    "relUrl": "/inclusion-and-support/#ombudsperson-for-students"
+  },"43": {
+    "doc": "Inclusion and Support",
+    "title": "UC Berkeley Food Pantry",
+    "content": "The UC Berkeley Food Pantry (#68 Martin Luther King Student Union; https://pantry.berkeley.edu) aims to reduce food insecurity among students and staff at UC Berkeley, especially the lack of nutritious food. Students and staff can visit the pantry as many times as they need and take as much as they need while being mindful that it is a shared resource. The pantry operates on a self-assessed need basis; there are no eligibility requirements. The pantry is not for students and staff who need supplemental snacking food, but rather, core food support. ",
+    "url": "/inclusion-and-support/#uc-berkeley-food-pantry",
+    
+    "relUrl": "/inclusion-and-support/#uc-berkeley-food-pantry"
+  },"44": {
+    "doc": "Schedule",
+    "title": "Weekly Schedule",
+    "content": ". | 9:00 AM | 9:30 AM | 10:00 AM | 10:30 AM | 11:00 AM | 11:30 AM | 12:00 PM | 12:30 PM | 1:00 PM | 1:30 PM | 2:00 PM | 2:30 PM | 3:00 PM | 3:30 PM | 4:00 PM | 4:30 PM | 5:00 PM | 5:30 PM | . | ",
+    "url": "/schedule/#weekly-schedule",
+    
+    "relUrl": "/schedule/#weekly-schedule"
+  },"45": {
+    "doc": "Schedule",
+    "title": "Monday",
+    "content": "| ",
+    "url": "/schedule/",
+    
+    "relUrl": "/schedule/"
+  },"46": {
+    "doc": "Schedule",
+    "title": "Tuesday",
+    "content": ". | Lecture 11:00 AM–12:30 PM Soda 405 | . | ",
+    "url": "/schedule/",
+    
+    "relUrl": "/schedule/"
+  },"47": {
+    "doc": "Schedule",
+    "title": "Wednesday",
+    "content": "| ",
+    "url": "/schedule/",
+    
+    "relUrl": "/schedule/"
+  },"48": {
+    "doc": "Schedule",
+    "title": "Thursday",
+    "content": ". | Lecture 11:00 AM–12:30 PM Soda 405 | . | ",
+    "url": "/schedule/",
+    
+    "relUrl": "/schedule/"
+  },"49": {
+    "doc": "Schedule",
+    "title": "Friday",
+    "content": "| . ",
+    "url": "/schedule/",
+    
+    "relUrl": "/schedule/"
+  },"50": {
+    "doc": "Schedule",
+    "title": "Schedule",
+    "content": " ",
+    "url": "/schedule/",
+    
+    "relUrl": "/schedule/"
+  },"51": {
+    "doc": "Suggested Reading",
+    "title": "Suggested Reading",
+    "content": "There is no required textbook for the course, but the following books and lecture notes may be useful: . | Course materials from CS 171 (Undergraduate Cryptography). This is the precursor to our course, and we assume students are familiar with the content. | Katz and Lindell’s textbook Introduction to Modern Cryptography is written at an advanced undergraduate level and matches much of the curriculum from CS 171. | Boneh and Shoup’s upcoming book A Graduate Course in Applied Cryptography | Lecture notes by Pass-Shelat, Bellare-Goldwasser and Bellare-Rogway | Goldreich’s book: Foundations of Cryptography Vol. 1 and Vol. 2 (some fragments are freely available) | Nigel Smart’s book: Cryptography, An Introduction | Menezes, Oorschot, and Vanstone’s book: Handbook of Applied Cryptography | Rosulek’s book: The Joy of Cryptography | Ostrovsky: http://web.cs.ucla.edu/~rafail/PUBLIC/OstrovskyDraftLecNotes2010.pdf | . ",
+    "url": "/suggested-reading/",
+    
+    "relUrl": "/suggested-reading/"
+  }
+}
