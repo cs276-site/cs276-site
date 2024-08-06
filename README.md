@@ -5,7 +5,7 @@ nav_exclude: false
 permalink: /:path/
 seo:
   type: Course
-  name: CS 171 - Test
+  name: CS 276
 ---
 
 <style>
@@ -60,7 +60,7 @@ seo:
 
 <div class="row">
   <div class="column text-container">
-     <h1>Welcome to CS 276!</h1>
+     <h1>Welcome to CS 276! - Test</h1>
   </div>
   <div class="column image-container">
     <img src="assets/images/alicebob.png" alt="Alice and Bob">
