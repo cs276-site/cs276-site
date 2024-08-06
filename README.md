@@ -60,7 +60,7 @@ seo:
 
 <div class="row">
   <div class="column text-container">
-     <h1>Welcome to CS 276!</h1>
+     <h1>Welcome to CS 276: Graduate Cryptography</h1>
   </div>
   <div class="column image-container">
     <img src="assets/images/alicebob.png" alt="Alice and Bob">
