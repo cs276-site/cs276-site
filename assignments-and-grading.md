@@ -21,6 +21,7 @@ There are three kinds of assignments:
 *   **[Problem Sets](#problem-sets)** typically involve writing proofs. They are assigned weekly.
 *   **[Research Project](#research-project):** Students will do a research project of their choice in the field of cryptography. They should aim to produce publishable results by the end of the semester or at least make progress in that direction.
 *   **[Scribe Notes](#scribe-notes):** Students will each write scribe notes for one lecture.
+Details about each kind of assignment can be found below.
 
 Final grades are based on the following weighted combination of assignment scores:
 *   40% Problem Sets
