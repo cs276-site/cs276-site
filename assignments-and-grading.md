@@ -59,7 +59,24 @@ Similarly, you may use books or online resources to help solve homework problems
 Any student found to be violating these policies or cheating otherwise risks automatically failing the class and being referred to the Center for Student Conduct.
 
 ## Research Project
-For the research project, you may work in groups and submit one project report for the whole group.
+Students will do a research project related to cryptography and aim to produce novel and publishable results by the end of the semester. Students may work in groups and submit one project report for the whole group. 
+
+Since many students are already doing research in cryptography outside of the course, they may use an outside project to satisfy this requirement. However, the project should not have been underway before the start of the semester. Additionally, students may collaborate with people outside of the class, but the students should be significant contributors and should write the project report without outside help.
+
+If you need help finding a project topic, please reach out to the course staff. We are happy to offer advice.
+
+### Grading
+Projects will be evaluated similarly to how papers are reviewed for conferences and journals. The following criteria are important:
+*   Motivation: Review the literature and explain why your project -- if successful -- would be a novel and useful contribution to the field.
+*   Results: Present your work clearly. Support your claims with proofs or data.
+
+We understand that research projects often fail to produce results and that 1 semester may not be enough time to produce a publishable paper, so it is fine to produce partial results or failed attempts. You can explain what you would do if you had more time or what you can learn from any failed attempts. Projects that do these things can receive full credit if the work is presented clearly.
+
+### Timeline
+We will have the following checkpoints throughout the semester.
+*   F 9/20: Identify a topic and collaborators (if any)
+*   F 10/18: Submit a research proposal (no more than 2 pages). The proposal should state a clear research goal, review the relevant literature, and argue why this goal is novel and interesting. Furthermore, it should describe the approach that you will take to solving the problem and explain why it could plausibly succeed.
+*   F 12/13: Submit the final project report
 
 ## Scribe Notes
 Each student will write scribe notes for one lecture. Sign up to scribe a lecture [here](https://docs.google.com/spreadsheets/d/174bPvR3db2Uvda138NZWzITQixrS3XxK4Cn-1Ie1gLM/edit?usp=sharing){:target="_blank"}.
