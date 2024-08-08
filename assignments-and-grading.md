@@ -59,7 +59,7 @@ Similarly, you may use books or online resources to help solve homework problems
 Any student found to be violating these policies or cheating otherwise risks automatically failing the class and being referred to the Center for Student Conduct.
 
 ## Research Project
-Students will do a research project related to cryptography and aim to produce novel and publishable results by the end of the semester. Students may work in groups and submit one project report for the whole group. 
+You will do a research project related to cryptography and aim to produce novel and publishable results by the end of the semester, although partial progress toward this goal is acceptable. You may work with other students and submit one project report for the whole group. 
 
 Since many students are already doing research in cryptography outside of the course, they may use an outside project to satisfy this requirement. However, the project should not have been underway before the start of the semester. Additionally, students may collaborate with people outside of the class, but the students should be significant contributors and should write the project report without outside help.
 
