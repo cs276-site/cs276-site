@@ -61,7 +61,7 @@ Any student found to be violating these policies or cheating otherwise risks aut
 ## Research Project
 You will do a research project related to cryptography. Aim to produce novel results by the end of the semester, although partial progress toward this goal is fine. You may work with other students and submit one project report for the whole group. 
 
-Since many students are already doing research in cryptography outside of the course, they may use an outside project to satisfy this requirement. However, the project should not have been underway before the start of the semester. Additionally, students may collaborate with people outside of the class, but the students should be significant contributors and should write the project report without outside help.
+Since many students are already doing research in cryptography outside of the course, you may use an outside project to satisfy this requirement. However, the project should not have been underway before the start of the semester. Additionally, you may collaborate with people outside of the class, but you should be a significant contributor and should write the project report without outside help.
 
 If you need help finding a project topic, please reach out to the course staff. We are happy to offer advice.
 
@@ -74,9 +74,9 @@ We understand that research projects often fail to produce results and that 1 se
 
 ### Timeline
 We will have the following checkpoints throughout the semester.
-*   F 9/20: Identify a topic and collaborators (if any)
+*   F 9/20: Identify a topic and collaborators (if any).
 *   F 10/18: Submit a research proposal (no more than 2 pages). The proposal should state a clear research goal, review the relevant literature, and argue why this goal is novel and interesting. Furthermore, it should describe the approach that you will take to solving the problem and explain why it could plausibly succeed.
-*   F 12/13: Submit the final project report
+*   F 12/13: Submit the final project report.
 
 ## Scribe Notes
 Each student will write scribe notes for one lecture. Sign up to scribe a lecture [here](https://docs.google.com/spreadsheets/d/174bPvR3db2Uvda138NZWzITQixrS3XxK4Cn-1Ie1gLM/edit?usp=sharing){:target="_blank"}.
