@@ -17,20 +17,17 @@ nav_order: 3
 
 ---
 
-### Assignments
 There are three kinds of assignments:
 *   **[Problem Sets](#problem-sets)** typically involve writing proofs. They are assigned weekly.
-*   **[Research Project](#research-project):** Students will work on a research project related to cryptography. Students can pick the topic and work in groups. They should aim to produce publishable results by the end of the semester or at least make progress in that direction.
-*   **[Scribe Notes](#scribe-notes):** Each student will write scribe notes for one lecture.
+*   **[Research Project](#research-project):** Students will do a research project of their choice in the field of cryptography. They should aim to produce publishable results by the end of the semester or at least make progress in that direction.
+*   **[Scribe Notes](#scribe-notes):** Students will each write scribe notes for one lecture.
 
-### Grading
 Final grades are based on the following weighted combination of assignment scores:
 *   40% Problem Sets
 *   40% Research Project
 *   20% Scribe Notes
 
-### Late Policy
-Assignments submitted late will lose 5% for every hour that they are late. For example: if you submit 1 minute late, you lose 5%. If you submit 61 minutes late, you lose 10%.
+**Late Policy:** Assignments submitted late will lose 5% for every hour that they are late. For example: if you submit 1 minute late, you lose 5%. If you submit 61 minutes late, you lose 10%.
 
 
 ## Problem Sets
