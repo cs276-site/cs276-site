@@ -11,7 +11,7 @@ nav_order: 5
 
 ## CS 276
 *	Scribe notes for this semester are found in our [shared Overleaf project](https://www.overleaf.com/4483254187fjrmyctxzxfq#d396c1) and can be viewed by compiling `collection-F24.tex`. 
-*	[Scribe notes from past semesters](/assets/lecture-notes/CS_276_Old_Scribe_Notes)
+*	[Scribe notes from past semesters](/assets/lecture-notes/CS_276_Old_Scribe_Notes.pdf)
 *	Course materials from a previous iteration of this course: [CS 276 - Fall 2014](http://people.eecs.berkeley.edu/~sanjamg/assets/classes/cs276-fall14/)
 
 ## Other Resources
