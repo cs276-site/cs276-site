@@ -63,8 +63,8 @@ Any student found to be violating these policies or cheating otherwise risks aut
 For the research project, you may work in groups and submit one project report for the whole group.
 
 ## Scribe Notes{#Scribe_Notes}
-Each student will write scribe notes for one lecture. Sign up to scribe a lecture [here](https://docs.google.com/spreadsheets/d/174bPvR3db2Uvda138NZWzITQixrS3XxK4Cn-1Ie1gLM/edit?usp=sharing).
+Each student will write scribe notes for one lecture. Sign up to scribe a lecture [here](https://docs.google.com/spreadsheets/d/174bPvR3db2Uvda138NZWzITQixrS3XxK4Cn-1Ie1gLM/edit?usp=sharing){:target="_blank"}.
 
-Write your scribe notes in our [shared Overleaf project](https://www.overleaf.com/4483254187fjrmyctxzxfq#d396c1). If you're scribing lecture 4, for instance, create a file called `lec04-F24.tex` for your scribe notes. You may find it useful to copy from old scribe notes. They can be found in the `Old Scribe Notes` folder and can be previewed by compiling the `Old Scribe Notes/collection.tex` file.
+Write your scribe notes in our [shared Overleaf project](https://www.overleaf.com/4483254187fjrmyctxzxfq#d396c1){:target="_blank"}. If you're scribing lecture 4, for instance, create a file called `lec04-F24.tex` for your scribe notes. You may find it useful to copy from old scribe notes. They can be found in the `Old Scribe Notes` folder and can be previewed by compiling the `Old Scribe Notes/collection.tex` file.
 
 Your notes are due within 1 week after the lecture you scribed. After that, please make any revisions to your notes that the course staff may suggest.
