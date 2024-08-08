@@ -5,13 +5,14 @@ description: Suggested textbooks and lecture notes
 nav_order: 5
 ---
 
-There is no required textbook for the course, but the following books and lecture notes may be useful:
 ## CS 171
 *	Course materials from [CS 171 - Spring 2024](https://eecs171.com/) (Undergraduate Cryptography). This is the precursor to our course, and we assume students are familiar with the content.
 *   Katz and Lindell's textbook [Introduction to Modern Cryptography](http://staff.ustc.edu.cn/~mfy/moderncrypto/reading%20materials/Introduction_to_Modern_Cryptography.pdf) is written at an advanced undergraduate level and matches much of the curriculum from CS 171.
 
 ## CS 276
-*	Course materials from a previous iteration of this course [CS 276 - Fall 2014](http://people.eecs.berkeley.edu/~sanjamg/assets/classes/cs276-fall14/)
+*	Scribe notes for this semester are found in our [shared Overleaf project](https://www.overleaf.com/4483254187fjrmyctxzxfq#d396c1) and can be viewed by compiling `collection-F24.tex`. 
+*	[Scribe notes from past semesters](/assets/lecture-notes/CS_276_Old_Scribe_Notes)
+*	Course materials from a previous iteration of this course: [CS 276 - Fall 2014](http://people.eecs.berkeley.edu/~sanjamg/assets/classes/cs276-fall14/)
 
 ## Other Resources
 *   Boneh and Shoup's upcoming book [A Graduate Course in Applied Cryptography](https://toc.cryptobook.us/book.pdf)
