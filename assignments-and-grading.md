@@ -19,9 +19,9 @@ nav_order: 3
 
 ### Assignments
 There are three kinds of assignments:
-*   **[Problem Sets](#Problem_Sets)** typically involve writing proofs. They are assigned weekly.
-*   **[Research Project](#Research_Project):** Students will work on a research project related to cryptography. Students can pick the topic and work in groups. They should aim to produce publishable results by the end of the semester or at least make progress in that direction.
-*   **[Scribe Notes](#Scribe_Notes):** Each student will write scribe notes for one lecture.
+*   **[Problem Sets](#problem-sets)** typically involve writing proofs. They are assigned weekly.
+*   **[Research Project](#research-project):** Students will work on a research project related to cryptography. Students can pick the topic and work in groups. They should aim to produce publishable results by the end of the semester or at least make progress in that direction.
+*   **[Scribe Notes](#scribe-notes):** Each student will write scribe notes for one lecture.
 
 ### Grading
 Final grades are based on the following weighted combination of assignment scores:
@@ -33,7 +33,7 @@ Final grades are based on the following weighted combination of assignment score
 Assignments submitted late will lose 5% for every hour that they are late. For example: if you submit 1 minute late, you lose 5%. If you submit 61 minutes late, you lose 10%.
 
 
-## Problem Sets{#Problem_Sets}
+## Problem Sets
 Problem sets will typically involve writing proofs. They are assigned weekly.
 
 ### Self-Scoring
@@ -59,10 +59,10 @@ Similarly, you may use books or online resources to help solve homework problems
 
 Any student found to be violating these policies or cheating otherwise risks automatically failing the class and being referred to the Center for Student Conduct.
 
-## Research Project{#Research_Project}
+## Research Project
 For the research project, you may work in groups and submit one project report for the whole group.
 
-## Scribe Notes{#Scribe_Notes}
+## Scribe Notes
 Each student will write scribe notes for one lecture. Sign up to scribe a lecture [here](https://docs.google.com/spreadsheets/d/174bPvR3db2Uvda138NZWzITQixrS3XxK4Cn-1Ie1gLM/edit?usp=sharing){:target="_blank"}.
 
 Write your scribe notes in our [shared Overleaf project](https://www.overleaf.com/4483254187fjrmyctxzxfq#d396c1){:target="_blank"}. If you're scribing lecture 4, for instance, create a file called `lec04-F24.tex` for your scribe notes. You may find it useful to copy from old scribe notes. They can be found in the `Old Scribe Notes` folder and can be previewed by compiling the `Old Scribe Notes/collection.tex` file.
