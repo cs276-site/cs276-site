@@ -21,9 +21,11 @@ nav_order: 2
 
 Cryptography enables encrypted communication, digital signatures, and verifiable computation, among other applications. In abstract terms, cryptography is the science of designing algorithms that enable secure communication and computation in an untrusted environment. Over the last four decades, cryptography has transformed from an ad hoc collection of mysterious tricks into a rigorous science based on complexity theory. Modern cryptography emphasizes precise mathematical definitions of security, and proofs of security that reduce to well-studied computational hardness assumptions.
 
-## Prerequisites
+Students will practice writing mathematically rigorous security proofs and doing original research in the field of cryptography.
 
-We require CS 170 (Efficient Algorithms and Intractable Problems), and we recommend either CS 171 (Undergraduate Cryptography) or CS 161 (Computer Security). [CS 171](https://eecs171.com/) is the precursor to our course, and we assume students are familiar with the content. In particular, students should be comfortable writing security proofs.
+## Prerequisites
+This course is designed for graduate students with some prior coursework and research experience in cryptography.
+We recommend that students be familiar with the content from [CS 170](https://cs170.org/) (Efficient Algorithms and Intractable Problems) and [CS 171](https://eecs171.com/) (Undergraduate Cryptography). In particular, students should be comfortable writing security proofs.
 
 ## Course Staff
 
@@ -37,7 +39,8 @@ We require CS 170 (Efficient Algorithms and Intractable Problems), and we recomm
 {{ staffer }}
 {% endfor %}
 
-## Getting Started
+## How To Get Started
 * Join the course on [Gradescope](https://www.gradescope.com/courses/799228) using entry code **2BKDD8**. Gradescope is where you will submit your assignments and view your grades.
 * Join the Ed Discussion forum with this [join link](https://edstem.org/us/join/feHXXN). You will need a *berkeley.edu* email address to join. Ed is where you can post and answer questions about the course.
+* Sign up to scribe a lecture [here](https://docs.google.com/spreadsheets/d/174bPvR3db2Uvda138NZWzITQixrS3XxK4Cn-1Ie1gLM/edit?usp=sharing).
 * If you have DSP accommodations, please have your accommodation letters sent to the instructors as soon as possible. Also, please email bhaskarr@berkeley.edu with any logistical questions.
