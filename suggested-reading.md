@@ -5,7 +5,7 @@ description: Suggested textbooks and lecture notes
 nav_order: 5
 ---
 
-## CS 171
+## CS 171 - Undergrad Cryptography
 *	Course materials from [CS 171 - Spring 2024](https://eecs171.com/) (Undergraduate Cryptography). This is the precursor to our course, and we assume students are familiar with the content.
 *   Katz and Lindell's textbook [Introduction to Modern Cryptography](http://staff.ustc.edu.cn/~mfy/moderncrypto/reading%20materials/Introduction_to_Modern_Cryptography.pdf) is written at an advanced undergraduate level and matches much of the curriculum from CS 171.
 
