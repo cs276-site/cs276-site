@@ -6,7 +6,7 @@ nav_order: 5
 ---
 
 *	[Scribe notes from past semesters](/assets/lecture-notes/CS_276_Old_Scribe_Notes.pdf)
-*	Scribe notes for this semester are found in our [shared Overleaf project](https://www.overleaf.com/4483254187fjrmyctxzxfq#d396c1) and can be viewed by compiling `collection-F24.tex`. 
+*	Scribe notes for this semester are found in our [shared Overleaf project](https://www.overleaf.com/read/gtzztzzrdhtb#49cc0c) and can be viewed by compiling `collection-F24.tex`. 
 *	Course materials from a previous iteration of this course: [CS 276 - Fall 2014](http://people.eecs.berkeley.edu/~sanjamg/assets/classes/cs276-fall14/)
 
 ## CS 171 - Undergrad Cryptography
