@@ -75,7 +75,7 @@ We understand that research projects often fail to produce results and that 1 se
 ### Timeline
 We will have the following checkpoints throughout the semester.
 *   F 9/20: Identify a topic and collaborators (if any).
-*   F 10/18: Submit a research proposal (no more than 2 pages). The proposal should state a clear research goal, review the relevant literature, and argue why this goal is novel and interesting. Furthermore, it should describe the approach that you will take to solving the problem and explain why it could plausibly succeed.
+*   F 10/18: Submit a research proposal (no more than 3 pages). The proposal should state a clear research goal, review the relevant literature, and argue why this goal is novel and interesting. Furthermore, it should describe the approach that you will take to solving the problem and explain why it could plausibly succeed.
 *   F 12/13: Submit the final project report.
 
 ## Scribe Notes
