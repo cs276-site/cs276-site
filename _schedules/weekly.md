@@ -1,7 +1,5 @@
 ---
 timeline:
-  - '9:00 AM'
-  - '9:30 AM'
   - '10:00 AM'
   - '10:30 AM'
   - '11:00 AM'
@@ -18,6 +16,12 @@ timeline:
   - '4:30 PM'
   - '5:00 PM'
   - '5:30 PM'
+  - '6:00 PM'
+  - '6:30 PM'
+  - '7:00 PM'
+  - '7:30 PM'
+  - '8:00 PM'
+  - '8:30 PM'
 schedule:
   - name: Monday
   - name: Tuesday
@@ -33,7 +37,7 @@ schedule:
         start: 11:00 AM
         end: 12:30 PM
         location: Soda 405
-      - name: GSI Office Hours
+      - name: GSI Office Hours (starts on 9/5)
         start: 6:00 PM
         end: 8:00 PM
         location: Soda 611
