@@ -33,16 +33,16 @@ Final grades are based on the following weighted combination of assignment score
 
 
 ## Problem Sets
-Problem sets will typically involve writing proofs. They are assigned weekly.
+Problem sets will typically involve writing proofs. They are assigned weekly. You will be submitting your work done on gradescope. 
 
 ### Self-Scoring
-After the answer key is posted, you will score your submission based on how rigorous and correct your solutions are, using the following rubric:
+After the submissions have been made on gradescope an answer key will be posted. Next, you will score your submission based on how rigorous and correct your solutions are, using the following rubric:
 * 5 points: The submission is complete and correct. 
 * 4 points: There are small mistakes or gaps in the solution.
 * 3 points: The main approach is right, but there are major gaps in the solution.
 * 1 or 2 points: The main approach is not correct.
 
-The score value that you give your submission will not affect your actual grade.
+The score value that you give your submission may not affect your actual grade as the course staff may modify the score.
 
 The self-scoring is due one week after the problem set is due.
 

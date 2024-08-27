@@ -21,11 +21,12 @@ nav_order: 2
 
 Cryptography enables encrypted communication, digital signatures, and verifiable computation, among other applications. In abstract terms, cryptography is the science of designing algorithms that enable secure communication and computation in an untrusted environment. Over the last four decades, cryptography has transformed from an ad hoc collection of mysterious tricks into a rigorous science based on complexity theory. Modern cryptography emphasizes precise mathematical definitions of security, and proofs of security that reduce to well-studied computational hardness assumptions.
 
-In this course, students will practice writing mathematically rigorous security proofs and doing original research in the field of cryptography.
+In this course, students will learn about some of the foundational topics in cryptography and doing original research in the field of cryptography.
 
 ## Prerequisites
-This course is designed for graduate students with some prior coursework and research experience in cryptography.
-We recommend that students be familiar with the content from [CS 170](https://cs170.org/) (Efficient Algorithms and Intractable Problems) and [CS 171](https://eecs171.com/) (Undergraduate Cryptography). In particular, students should be comfortable writing security proofs.
+This course is designed for graduate students with basic familiary with cryptographic or sufficient mathematical maturity to catup with the material in class. 
+
+Students without sufficient background should consider taking the Undergraduate Cryptogrphy Class [CS 171](https://eecs171.com/).
 
 ## Course Staff
 
