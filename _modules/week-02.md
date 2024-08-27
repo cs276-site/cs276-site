@@ -1,9 +1,9 @@
 ---
-title: Week 2
+title: Week 1
 ---
 
-T 9/10
+T 9/3
 : 
 
-Th 9/12
+Th 9/5
 : 
