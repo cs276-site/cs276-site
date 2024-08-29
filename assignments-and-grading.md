@@ -27,29 +27,27 @@ Details about each kind of assignment can be found below.
 Final grades are based on the following weighted combination of assignment scores:
 *   40% Problem Sets
 *   40% Research Project
-*   20% Scribe Notes
+*   20% Scribe Notes and Class Participation
 
 **Late Policy:** Assignments submitted late will lose 5% for every hour that they are late. For example: if you submit 1 minute late, you lose 5%. If you submit 61 minutes late, you lose 10%.
 
 
 ## Problem Sets
-Problem sets will typically involve writing proofs. They are assigned weekly. You will be submitting your work done on gradescope. 
+Problem sets are assigned weekly and will typically involve writing proofs. You will submit your work on gradescope.
+
+You don't have to write a perfect solution to get a perfect score. You will receive full credit if you complete every problem, get most of the details correct, and complete the self-scoring.
+
+**Drop Policy:** We will drop your lowest 2 problem set scores.
 
 ### Self-Scoring
-After the submissions have been made on gradescope an answer key will be posted. Next, you will score your submission based on how rigorous and correct your solutions are, using the following rubric:
-* 5 points: The submission is complete and correct. 
-* 4 points: There are small mistakes or gaps in the solution.
+After the answer key is posted, you will score your submission based on how rigorous and correct your solutions are, using the following rubric:
+* 5 points: The solution is complete and largely correct. There may be small mistakes.
 * 3 points: The main approach is right, but there are major gaps in the solution.
 * 1 or 2 points: The main approach is not correct.
 
-The score value that you give your submission may not affect your actual grade as the course staff may modify the score.
-
 The self-scoring is due one week after the problem set is due.
 
-### Grading
-You don't have to write a perfect solution to get a perfect score. You will receive full credit if you attempt every problem, get most of the details correct, and complete the self-scoring.
-
-**Drop Policy:** We will drop your lowest 2 problem set scores.
+Your actual grade may be different from the self-score if the course staff choose to revise the score.
 
 ### Collaboration
 You are encouraged to collaborate with other students on the problem sets, but you must write your solutions individually and list all of your significant collaborators. You may collaborate with other students by explaining the meaning of a question, or exploring a potential approach to solving the question. However, you should never possess, read, or copy from another student's exact solutions.
@@ -84,3 +82,6 @@ Each student will write scribe notes for one lecture. Sign up to scribe a lectur
 Write your scribe notes in our [shared Overleaf project](https://www.overleaf.com/read/gtzztzzrdhtb#49cc0c){:target="_blank"}. If you're scribing lecture 4, for instance, create a file called `lec04-F24.tex` for your scribe notes. You may find it useful to copy from old scribe notes. They can be found in the `Old Scribe Notes` folder and can be previewed by compiling the `Old Scribe Notes/collection.tex` file.
 
 Your notes are due within 1 week after the lecture you scribed. After that, please make any revisions to your notes that the course staff may suggest.
+
+## Class Participation
+Some examples of good class participation include answering questions on Ed and participating in lecture discussions.
