@@ -21,7 +21,7 @@ nav_order: 2
 
 Cryptography enables encrypted communication, digital signatures, and verifiable computation, among other applications. In abstract terms, cryptography is the science of designing algorithms that enable secure communication and computation in an untrusted environment. Over the last four decades, cryptography has transformed from an ad hoc collection of mysterious tricks into a rigorous science based on complexity theory. Modern cryptography emphasizes precise mathematical definitions of security, and proofs of security that reduce to well-studied computational hardness assumptions.
 
-In this course, students will learn about some of the foundational topics in cryptography and doing original research in the field of cryptography.
+In this course, students will study some foundational topics in cryptography and do original research in the field.
 
 ## Prerequisites
 This course is designed for graduate students with basic familiary with cryptographic or sufficient mathematical maturity to catup with the material in class. 
