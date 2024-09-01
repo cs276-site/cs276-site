@@ -37,7 +37,7 @@ schedule:
         start: 11:00 AM
         end: 12:30 PM
         location: Soda 405
-      - name: GSI Office Hours (starts on 9/5)
+      - name: GSI Office Hours
         start: 6:00 PM
         end: 8:00 PM
         location: Soda 611
