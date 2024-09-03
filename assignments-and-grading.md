@@ -77,11 +77,17 @@ We will have the following checkpoints throughout the semester.
 *   F 12/13: Submit the final project report.
 
 ## Scribe Notes
-Each student will write scribe notes for one lecture. Sign up to scribe a lecture [here](https://docs.google.com/spreadsheets/d/174bPvR3db2Uvda138NZWzITQixrS3XxK4Cn-1Ie1gLM/edit?usp=sharing){:target="_blank"}.
+Each student will write scribe notes for one lecture. Sign up to scribe a lecture [here](https://docs.google.com/spreadsheets/d/174bPvR3db2Uvda138NZWzITQixrS3XxK4Cn-1Ie1gLM/edit?usp=sharing){:target="_blank"}. Your notes are due within 1 week after the lecture you scribed.
 
-Write your scribe notes in our [shared Overleaf project](https://www.overleaf.com/read/gtzztzzrdhtb#49cc0c){:target="_blank"}. If you're scribing lecture 4, for instance, create a file called `lec04-F24.tex` for your scribe notes. You may find it useful to copy from old scribe notes. They can be found in the `Old Scribe Notes` folder and can be previewed by compiling the `Old Scribe Notes/collection.tex` file.
+1. First clone the [github repo](https://github.com/sanjamg/276-F24-Notes.git) for the scribe notes.
 
-Your notes are due within 1 week after the lecture you scribed. After that, please make any revisions to your notes that the course staff may suggest.
+2. Make any changes locally. If you're scribing lecture 4, for instance, create a file called `lec04-F24.tex` for your notes. Additionally, you may find it useful to copy from old scribe notes. They can be found in the `Old Scribe Notes` folder and can be previewed by compiling the `Old Scribe Notes/collection.tex` file.
+
+3. Use [latexdiff](https://www.overleaf.com/learn/latex/Articles/How_to_use_latexdiff_on_Overleaf) to generate a latex document `diff.tex` that illustrates your changes, and add it to the repo. If `diff.tex` already exists in the repo, you may overwrite its contents.
+
+4. [Create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) of your changes. The course staff will review and approve your changes, which will then become part of our [scribe notes on Overleaf](https://www.overleaf.com/read/gtzztzzrdhtb#49cc0c){:target="_blank"}. 
+
+5. Please make any revisions to your notes that the course staff may suggest.
 
 ## Class Participation
 Some examples of good class participation include answering questions on Ed and participating in lecture discussions.
