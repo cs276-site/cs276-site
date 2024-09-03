@@ -33,7 +33,7 @@ Final grades are based on the following weighted combination of assignment score
 
 
 ## Problem Sets
-Problem sets are assigned weekly and will typically involve writing proofs. You will submit your work on gradescope.
+Problem sets are assigned weekly and will typically involve writing proofs. You will submit your work on [Gradescope](https://www.gradescope.com/courses/799228){:target="_blank"} (use entry code **2BKDD8** to join).
 
 You don't have to write a perfect solution to get a perfect score. You will receive full credit if you complete every problem, get most of the details correct, and complete the self-scoring.
 
