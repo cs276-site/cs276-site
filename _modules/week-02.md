@@ -7,5 +7,5 @@ Tu 9/03
     : 
 
 Th 9/05
-: **Lecture**{: .label .label-green } [One Way Functions: Existence (Section 2.4), Pseudorandomness](/assets/lecture-notes/collection-F24.pdf)
+: **Lecture**{: .label .label-green } [One Way Functions: Existence (Section 2.4), Hardness Concentration (Section 2.5)](/assets/lecture-notes/collection-F24.pdf)
     : 
