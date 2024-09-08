@@ -8,4 +8,4 @@ Th 8/29
 
 F 8/30
 : **Homework**{: .label .label-yellow } [Homework 1](/assets/homework/hw-1.pdf)
-    : [LaTeX](/assets/homework/hw-1.tex)
+    : [LaTeX](/assets/homework/hw-1.tex), [Solution](/assets/homework/hw-1-sol.pdf)
