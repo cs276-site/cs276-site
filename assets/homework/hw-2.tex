@@ -1,0 +1,136 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate,comment}
+\usepackage{url}
+\usepackage{color}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{mdframed}
+
+\pagestyle{fancy}
+\setlength{\headheight}{20pt}
+\setlength{\headsep}{20pt}
+\fancyhead[L]{\small{CS 276, Fall 2024}}
+\fancyhead[R]{\small{Prof. Sanjam Garg}}
+
+\newcommand\custombox[2]{%%
+    \fbox{\rule{#1}{0pt}\rule[-0.5ex]{0pt}{#2}}}
+
+\newcommand\answerbox{%%
+    \fbox{\rule{1in}{0pt}\rule[-0.5ex]{0pt}{4ex}}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{remark}[theorem]{Remark}
+\newenvironment{assumption}{\noindent{\bf Assumption}\hspace*{1em}\begin{em}}{\end{em}\medskip}
+\newenvironment{solution}{\color{blue}\noindent{\bf Solution}\hspace*{1em}}{\qed\medskip}
+
+\numberwithin{equation}{section}
+
+% Crypto terms
+\newcommand{\Gen}{\mathsf{Gen}}
+\newcommand{\Enc}{\mathsf{Enc}}
+\newcommand{\Dec}{\mathsf{Dec}}
+\newcommand{\gen}{\mathsf{Gen}}
+\newcommand{\enc}{\mathsf{Enc}}
+\newcommand{\dec}{\mathsf{Dec}}
+\newcommand{\Sign}{\mathsf{Sign}}
+\newcommand{\sign}{\mathsf{Sign}}
+\newcommand{\Verify}{\mathsf{Verify}}
+\newcommand{\verify}{\mathsf{Verify}}
+\newcommand{\MAC}{\mathsf{MAC}}
+\newcommand{\mac}{\mathsf{Mac}}
+\newcommand{\pk}{\mathsf{pk}}
+\newcommand{\sk}{\mathsf{sk}}
+
+% mathbb
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+% mathcal
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
+
+% Words
+\newcommand{\Rank}{\mathsf{Rank}}
+\newcommand{\GF}{\mathsf{GF}}
+\newcommand{\msg}{\mathsf{msg}}
+\newcommand{\negl}{\mathsf{negl}}
+\newcommand{\nonnegl}{\mathsf{nonnegl}}
+\newcommand{\st}{\mathsf{st}}
+\newcommand{\adv}{\cA}
+\newcommand{\hyb}{\mathsf{Hyb}}
+
+% Math Notation
+\newcommand{\getsr}{\stackrel{\$}{\gets}}
+\newcommand{\bin}{\{0,1\}}
+\newcommand{\bit}{\bin}
+\newcommand{\qed}{\hspace*{\fill}\rule{7pt}{7pt}}
+
+\newcommand{\duedate}{Sept. 13th, 2024 at 8:59pm via Gradescope}
+
+\newif\ifsol
+\soltrue
+
+\begin{document}
+\section*{CS 276: Homework 2\\ {\small Due Date: \duedate} }
+
+\section{One-Way Functions}
+The security of a PRF is only guaranteed if the key is kept secret. However, GGM86's PRF construction still retains some form of security (namely weak one-wayness) even if the key is leaked.
+
+\begin{definition}[GGM86 Function Ensemble]\label{def:GGM-PRF}
+    Let $G:\bit^n \to \bit^{2n}$ be a PRG, where $G_0(s)$ outputs the first $n$ bits of $G(s)$ and $G_1(s)$ outputs the last $n$ bits of $G(s)$.
+    
+    For any seed $s \in \bit^n$, and any input $x = (x_1, \dots, x_n) \in \bit^n$, let the function $f^G_s: \bit^n \to \bit^n$ be defined as follows:
+    \[f^G_s(x_1, \dots, x_n) = G_{x_n}\Big(\dots G_{x_2}\big(G_{x_1}(s)\big) \dots \Big)\]
+    We sometimes write $f_s^G$ as $f_s$.
+    
+    Finally let us define the function ensemble $\cF_G = \{f_s^G\}_{s \in \bit^n}$.
+\end{definition}
+
+\begin{definition}[One-Way Function Ensemble]
+    Let $\cF = \{f_s\}_{s \in \bit^n}$ be a function ensemble where for every $s \in \bit^n$, $f_s$ maps $\bit^n \to \bit^n$ and is efficiently computable. 
+    
+    $\cF$ is \textbf{one-way} if for any efficient adversary $\cA$,
+    \[\Pr_{\stackrel{s \getsr \bit^n}{x \getsr \bit^n}}\left[\cA(s, f_s(x)) \in f_s^{-1}(f_s(x))\right] \leq \negl(n)\]
+\end{definition}
+
+\noindent\textbf{Question:} Prove that $\cF_G$ is one-way, assuming conjecture \ref{conj} below.
+\begin{conjecture}\label{conj}
+    \[\bbE_{s \getsr \bit^n}\left[\frac{|\mathsf{Img}\left(f_s\right)|}{2^n}\right] \geq 1 - \negl(n)\]
+\end{conjecture}
+
+Note: We do not know if this conjecture is true, but it is still possible to prove that $\cF_G$ is \textit{weakly} one-way without the conjecture.
+
+If you're unsure how to get started, try assuming that $f_s$ is one-to-one. This is a useful setting in which to build intuition.
+
+\ifsol
+$ $
+
+\begin{solution}
+TBD
+\end{solution}
+\fi
+
+\bibliography{cryptobib/abbrev0,cryptobib/crypto,smoser}
+\bibliographystyle{alpha}
+\end{document}
