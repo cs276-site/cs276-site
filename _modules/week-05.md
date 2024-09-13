@@ -7,5 +7,5 @@ Tu 9/24
     : 
 
 Th 9/26
-: **Lecture**{: .label .label-green } [Public-Key Encryption: Digital Signatures](/assets/lecture-notes/collection-F24.pdf)
+: **Lecture**{: .label .label-green } [Public-Key Cryptography: Digital Signatures](/assets/lecture-notes/collection-F24.pdf)
     : 
