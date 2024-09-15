@@ -6,6 +6,6 @@ Tu 10/08
 : **Lecture**{: .label .label-green } [Public Key Encryption](/assets/lecture-notes/collection-F24.pdf)
     : 
 
-Th 10/11
+Th 10/10
 : **Lecture**{: .label .label-green } [Public Key Encryption](/assets/lecture-notes/collection-F24.pdf)
     : 
