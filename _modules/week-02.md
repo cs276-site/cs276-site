@@ -12,4 +12,4 @@ Th 9/05
 
 S 9/07
 : **Homework**{: .label .label-yellow } [Homework 2](/assets/homework/hw-2.pdf)
-    : [LaTeX](/assets/homework/hw-2.tex)
+    : [LaTeX](/assets/homework/hw-2.tex), [Solution](/assets/homework/hw-2-sol.pdf)
