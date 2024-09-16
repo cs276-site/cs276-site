@@ -40,6 +40,7 @@ Students without sufficient background should consider taking the Undergraduate 
 {{ staffer }}
 {% endfor %}
 
+
 ## How To Get Started
 * Join the course on [Gradescope](https://www.gradescope.com/courses/799228){:target="_blank"} using entry code **2BKDD8**. Gradescope is where you will submit your assignments and view your grades.
 * Join the Ed Discussion forum with this [join link](https://edstem.org/us/join/feHXXN){:target="_blank"}. You will need a *berkeley.edu* email address to join. Ed is where you can post and answer questions about the course.
