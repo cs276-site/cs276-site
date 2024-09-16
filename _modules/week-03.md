@@ -8,4 +8,8 @@ Tu 9/10
 
 Th 9/12
 : **Lecture**{: .label .label-green } [Pseudorandom Functions (Sections 3.4, 3.5)](/assets/lecture-notes/collection-F24.pdf)
-    : [GGM PRF](https://www.wisdom.weizmann.ac.il/~oded/X/ggm.pdf), [Naor-Reingold](https://dl.acm.org/doi/abs/10.1145/972639.972643) 
+    : [GGM PRF](https://www.wisdom.weizmann.ac.il/~oded/X/ggm.pdf), [Naor-Reingold](https://dl.acm.org/doi/abs/10.1145/972639.972643)
+
+Su 9/15
+: **Homework**{: .label .label-yellow } [Homework 3](/assets/homework/hw-3.pdf)
+    : [LaTeX](/assets/homework/hw-3.tex)
