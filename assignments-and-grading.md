@@ -77,7 +77,7 @@ We will have the following checkpoints throughout the semester.
 *   F 12/13: Submit the final project report.
 
 ## Scribe Notes
-Each student will write scribe notes for one lecture. Sign up to scribe a lecture [here](https://docs.google.com/spreadsheets/d/174bPvR3db2Uvda138NZWzITQixrS3XxK4Cn-1Ie1gLM/edit?usp=sharing){:target="_blank"}. Your notes are due within 1 week after the lecture you scribed.
+Each student will write scribe notes for two lectures. Sign up to scribe lectures [here](https://docs.google.com/spreadsheets/d/174bPvR3db2Uvda138NZWzITQixrS3XxK4Cn-1Ie1gLM/edit?usp=sharing){:target="_blank"}. Your notes are due within 1 week after the lecture you scribed.
 
 1. First clone the [github repo](https://github.com/sanjamg/276-F24-Notes.git){:target="_blank"} for the scribe notes.
 
