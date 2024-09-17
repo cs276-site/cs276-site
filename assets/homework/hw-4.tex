@@ -1,0 +1,145 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate,comment}
+\usepackage{url}
+\usepackage{color}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{mdframed}
+
+\pagestyle{fancy}
+\setlength{\headheight}{20pt}
+\setlength{\headsep}{20pt}
+\fancyhead[L]{\small{CS 276, Fall 2024}}
+\fancyhead[R]{\small{Prof. Sanjam Garg}}
+
+\newcommand\custombox[2]{%%
+    \fbox{\rule{#1}{0pt}\rule[-0.5ex]{0pt}{#2}}}
+
+\newcommand\answerbox{%%
+    \fbox{\rule{1in}{0pt}\rule[-0.5ex]{0pt}{4ex}}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{assumption}[theorem]{Assumption}
+\newenvironment{solution}{\color{blue}\noindent{\bf Solution}\hspace*{1em}}{\qed\medskip}
+\newcommand{\proof}{\noindent{\bf Proof. }} %% To begin a proof write \proof
+\newcommand{\qed}{\mbox{}\hspace*{\fill}\nolinebreak\mbox{$\rule{0.6em}{0.6em}$}} %%to end your proof write $\qed$.
+
+\numberwithin{equation}{section}
+
+% Crypto terms
+\newcommand{\Gen}{\mathsf{Gen}}
+\newcommand{\Enc}{\mathsf{Enc}}
+\newcommand{\Dec}{\mathsf{Dec}}
+\newcommand{\gen}{\mathsf{Gen}}
+\newcommand{\enc}{\mathsf{Enc}}
+\newcommand{\dec}{\mathsf{Dec}}
+\newcommand{\Sign}{\mathsf{Sign}}
+\newcommand{\sign}{\mathsf{Sign}}
+\newcommand{\Verify}{\mathsf{Verify}}
+\newcommand{\verify}{\mathsf{Verify}}
+\newcommand{\MAC}{\mathsf{MAC}}
+\newcommand{\mac}{\mathsf{Mac}}
+\newcommand{\pk}{\mathsf{pk}}
+\newcommand{\sk}{\mathsf{sk}}
+
+% mathbb
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+% mathcal
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+
+% Words
+\newcommand{\Rank}{\mathsf{Rank}}
+\newcommand{\GF}{\mathsf{GF}}
+\newcommand{\msg}{\mathsf{msg}}
+\newcommand{\negl}{\mathsf{negl}}
+\newcommand{\nonnegl}{\mathsf{nonnegl}}
+\newcommand{\st}{\mathsf{st}}
+\newcommand{\adv}{\cA}
+\newcommand{\hyb}{\mathsf{Hyb}}
+
+% Math Notation
+\newcommand{\getsr}{\stackrel{\$}{\gets}}
+\newcommand{\bin}{\{0,1\}}
+\newcommand{\bit}{\bin}
+
+\newcommand{\duedate}{Friday September 27th, 2024 at 8:59pm via Gradescope}
+
+\newif\ifsol
+\soltrue
+
+\begin{document}
+\section*{CS 276: Homework 4\\ {\small Due Date: \duedate} }
+
+
+\section{Carter-Wegman Message Authentication Code}
+
+The Carter-Wegman MAC is built from a PRF and a hash function as follows. Let $p$ be a large prime. Let $n$ be the security parameter. Let $F: \cK_F \times \bit^n \to \bbZ_p$ be a secure PRF, and let $H:\cK_H \times \cM \to \bbZ_p$ be a hash function. Next:
+\begin{enumerate}
+    \item $\MAC$ takes a key $(k_H, k_F) \in \cK_H \times \cK_F$ and a message $m \in \cM$. Then $\MAC$ samples $r \getsr \bit^n$ and computes:
+    \[v = H(k_H, m) + F(k_F, r)\]
+    Finally $\MAC$ outputs $(r,v)$.
+    \item $\Verify$ takes a key $(k_H, k_F) \in \cK_H \times \cK_F$, a message $m \in \cM$, and a tag $(r,v) \in \bit^n \times \bbZ_p$. Then $\Verify$ checks that $v = H(k_H, m) + F(k_F, r)$. If so, $\Verify$ outputs $1$ (accept). If not, $\Verify$ outputs $0$ (reject).
+\end{enumerate}
+
+Now we will consider two possible choices for $H$:
+\begin{enumerate}
+    \item $H_1$ takes a key $k_H \getsr \bbZ_p$ and an input $m = (m_1, \dots, m_\ell) \in \bbZ_p^\ell$, where $\ell$ is polynomial in $n$. Then
+    \[H_1(k_H, m) = k_H^{\ell} + \sum_{i = 1}^\ell k_H^{\ell-i} \cdot m_i\]
+    \item $H_2(k_H, m) = k_H \cdot H_1(k_H, m)$
+\end{enumerate}
+
+\paragraph{Question:} Prove that the Carter-Wegman MAC is insecure if it is constructed with $H = H_1$, but it is secure if it is constructed with $H = H_2$.\newline
+
+\noindent The following definition of MAC security will be useful.
+\begin{definition}[MAC Security]
+A MAC is secure if for any non-uniform PPT adversary $\cA$, 
+\[\Pr[\mathsf{MAC}\text{-}\mathsf{Forge}_{\cA}(n) \to 1] \leq \negl(n)\]
+
+\noindent\underline{$\mathsf{MAC}\text{-}\mathsf{Forge}_{\cA}(n)$}:
+    \begin{enumerate}
+        \item \textbf{Setup:} The challenger samples $k$ uniformly from the key space. $\cA$ is given $1^n$.
+        \item \textbf{Query:} The adversary submits a message $m^{(i)}$; then the challenger computes a tag $t^{(i)} \gets \MAC(k, m^{(i)})$ and sends it to the adversary. The adversary may submit any polynomial number of message queries.
+        
+        Let $\cQ = \{(m^{(1)}, t^{(1)}), \dots, (m^{(q)}, t^{(q)})\}$ be the set of messages $m^{(i)}$ submitted in the query phase along with the tags $t^{(i)}$ computed by $\MAC$.
+        \item \textbf{Forgery:} The adversary outputs a message-tag pair $(m^*, t^*)$. The output of the game is $1$ if $(m^*,t^*) \notin \cQ$ and $\Verify(k, m^*, t^*) = 1$. The output is $0$ otherwise.
+    \end{enumerate}
+\end{definition}
+
+
+\ifsol
+\pagebreak
+\begin{solution}
+TBD    
+\end{solution}
+\fi
+
+\end{document}
