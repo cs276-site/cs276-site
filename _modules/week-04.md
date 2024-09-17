@@ -8,4 +8,4 @@ Tu 9/17
 
 Th 9/19
 : **Lecture**{: .label .label-green } [Message Authentication Codes: Definitions and Constructions](/assets/lecture-notes/collection-F24.pdf)
-    : 
+    : Section 12.3 of [JoC](https://joyofcryptography.com/pdf/chap12.pdf) 
