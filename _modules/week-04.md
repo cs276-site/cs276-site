@@ -9,5 +9,5 @@ Tu 9/17
     : [LaTeX](/assets/homework/hw-4.tex)
 
 Th 9/19
-: **Lecture**{: .label .label-green } [Message Authentication Codes: Definitions and Constructions](/assets/lecture-notes/collection-F24.pdf)
-    : Section 12.3 of [JoC](https://joyofcryptography.com/pdf/chap12.pdf) 
+: **Lecture**{: .label .label-green } [Message Authentication Codes and Autheticated Encryption: Definitions and Constructions](/assets/lecture-notes/collection-F24.pdf)
+    : Section 12.3 of [JoC](https://joyofcryptography.com/pdf/chap12.pdf), [Detailed Survey of Modes](https://www.cs.ucdavis.edu/~rogaway/papers/modes.pdf), for AES-GCM Mode see [here](https://eprint.iacr.org/2004/193.pdf), and [Section 9.7 here](https://toc.cryptobook.us/book.pdf).
