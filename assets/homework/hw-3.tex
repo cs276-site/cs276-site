@@ -11,6 +11,7 @@
 \usepackage{hyperref}
 \usepackage{cleveref}
 \usepackage{mdframed}
+% \input{preamble}
 
 \pagestyle{fancy}
 \setlength{\headheight}{20pt}
@@ -101,7 +102,7 @@
 Let us construct a more efficient variant of the Naor-Reingold PRF. 
 
 \begin{definition}[PRF Construction]\label{def:PRF-construction}
-Let $\bbG$ be a cryptographic group of prime order $p$. Let $\ell < p$ be polynomial in $\lambda$. Next, let $s^{*n} = (s_1, \dots, s_n, h)$ be sampled from $\cS^{*n} := \bbZ_p^n \times \bbG$, and let $x^{*n} = (x_1, \dots, x_n)$ be drawn from $\cX^{*n} = [\ell]^n$. Finally, define $F^{*n}:\cS^{*n} \times \cX^{*n} \to \bbG$ as follows:
+Let $\bbG$ be a cryptographic group of prime order $p$. Let $\ell \in \bbN$ be polynomial in $\lambda$. Next, let $s^{*n} = (s_1, \dots, s_n, h)$ be sampled from $\cS^{*n} := \bbZ_p^n \times \bbG$, and let $x^{*n} = (x_1, \dots, x_n)$ be drawn from $\cX^{*n} = [\ell]^n$. Finally, define $F^{*n}:\cS^{*n} \times \cX^{*n} \to \bbG$ as follows:
 \begin{align*}
     F^{*n}(s^{*n}, x^{*n}) = 
     \begin{cases}
@@ -115,17 +116,18 @@ This construction is more efficient than Naor-Reingold's PRF. $F^{*n}$ can handl
 \paragraph{Question:} Prove that the function $F^{*n}$ given in definition \ref{def:PRF-construction} is a secure PRF assuming the $\ell$-DDH assumption (assumption \ref{assumption:DDH-Variant}).
 
 \begin{assumption}[$\ell$-DDH Assumption]\label{assumption:DDH-Variant}
-Let $\bbG$ be a cryptographic group of prime order $p$, and let $\ell < p$. Then for any PPT adversary $\cA$, the following two hybrids $\cH_0$ and $\cH_1$ are indistinguishable:
+Let $\bbG$ be a cryptographic group of prime order $p$, and let $\ell < p$. Then for any PPT adversary $\cA$, the following two hybrids are indistinguishable:
 \begin{itemize}
-    \item $\cH_0$: The challenger samples $(x, g) \getsr \bbZ_p \times \bbG$ and then gives the adversary $(g, g^x, g^{x^2}, \dots, g^{x^\ell}, g^{1/x})$.
-    \item $\cH_0$: The challenger samples $(x, g, h) \getsr \bbZ_p \times \bbG \times \bbG$ and then gives the adversary $(g, g^x, g^{x^2}, \dots, g^{x^\ell}, h)$.
+    \item $\cG_0$: The challenger samples $(\alpha, g) \getsr \bbZ_p \times \bbG$ and then gives the adversary $(g, g^\alpha, g^{\alpha^2}, \dots, g^{\alpha^\ell}, g^{1/\alpha})$.
+    \item $\cG_1$: The challenger samples $(\alpha, g, r) \getsr \bbZ_p \times \bbG \times \bbG$ and then gives the adversary $(g, g^\alpha, g^{\alpha^2}, \dots, g^{\alpha^\ell}, r)$.
 \end{itemize}
-Finally, when $x = 0$, then define $g^{1/x} = 1$.
+Finally, when $\alpha = 0$, then define $g^{1/\alpha} = 1$.
 \end{assumption}
+Note that $p$ must be super-polynomial in $\lambda$ because otherwise $\ell$-DDH does not hold.
 
 \paragraph{Hint:} You may wish to use the following strategy. First, let us define a PRF $f$ over a smaller domain $[\ell]$. Let $f$ take a seed $(s,h) \in \bbZ_p \times \bbG$ and an input $x \in [\ell]$ and output:
 \begin{align*}
-    f(s,x) = 
+    f((s, h),x) = 
     \begin{cases}
         1, & s+x = 0\\
         h^{1/(s+x)}, &\text{else}
