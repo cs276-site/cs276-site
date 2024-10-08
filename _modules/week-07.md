@@ -7,10 +7,10 @@ Su 10/06
 : **Midterm Report**{: .label .label-red } [Instructions](/assets/homework/midterm-report.pdf)
 
 Tu 10/08
-: **Lecture**{: .label .label-green } [Public Key Encryption](/assets/lecture-notes/collection-F24.pdf)
+: **Lecture**{: .label .label-green } [Public Key Encryption: Fujisaki-Okamoto Transformation](/assets/lecture-notes/collection-F24.pdf)
     : 
  
 
 Th 10/10
-: **Lecture**{: .label .label-green } [Public Key Encryption](/assets/lecture-notes/collection-F24.pdf)
+: **Lecture**{: .label .label-green } [Public Key Encryption: Kyber Encryption](/assets/lecture-notes/collection-F24.pdf)
     : 
