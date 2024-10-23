@@ -1,0 +1,252 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate,comment}
+\usepackage{url}
+\usepackage{color}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{mdframed}
+% \input{preamble}
+
+\pagestyle{fancy}
+\setlength{\headheight}{20pt}
+\setlength{\headsep}{20pt}
+\fancyhead[L]{\small{CS 276, Fall 2024}}
+\fancyhead[R]{\small{Prof. Sanjam Garg}}
+
+\newcommand\custombox[2]{%%
+    \fbox{\rule{#1}{0pt}\rule[-0.5ex]{0pt}{#2}}}
+
+\newcommand\answerbox{%%
+    \fbox{\rule{1in}{0pt}\rule[-0.5ex]{0pt}{4ex}}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{assumption}[theorem]{Assumption}
+\newenvironment{solution}{\color{blue}\noindent{\bf Solution}\hspace*{1em}}{\qed\medskip}
+\newcommand{\proof}{\noindent{\bf Proof. }} %% To begin a proof write \proof
+\newcommand{\qed}{\mbox{}\hspace*{\fill}\nolinebreak\mbox{$\rule{0.6em}{0.6em}$}} %%to end your proof write $\qed$.
+
+\numberwithin{equation}{section}
+
+% mathbf
+\newcommand{\bfe}{\mathbf{e}}
+\newcommand{\bfp}{\mathbf{p}}
+\newcommand{\bfs}{\mathbf{s}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfx}{\mathbf{x}}
+\newcommand{\bfA}{\mathbf{A}}
+\newcommand{\bfT}{\mathbf{T}}
+
+% mathbb
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+% mathcal
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+
+% Crypto terms
+\newcommand{\Setup}{\mathsf{Setup}}
+\newcommand{\Gen}{\mathsf{Gen}}
+\newcommand{\Enc}{\mathsf{Enc}}
+\newcommand{\Dec}{\mathsf{Dec}}
+\newcommand{\gen}{\mathsf{Gen}}
+\newcommand{\enc}{\mathsf{Enc}}
+\newcommand{\dec}{\mathsf{Dec}}
+\newcommand{\Sign}{\mathsf{Sign}}
+\newcommand{\sign}{\mathsf{Sign}}
+\newcommand{\Verify}{\mathsf{Verify}}
+\newcommand{\verify}{\mathsf{Verify}}
+\newcommand{\MAC}{\mathsf{MAC}}
+\newcommand{\mac}{\mathsf{Mac}}
+\newcommand{\pk}{\mathsf{pk}}
+\newcommand{\sk}{\mathsf{sk}}
+\newcommand{\mpk}{\mathsf{mpk}}
+\newcommand{\msk}{\mathsf{msk}}
+\newcommand{\ct}{\mathsf{ct}}
+\newcommand{\secp}{\lambda}
+
+\newcommand{\Rank}{\mathsf{Rank}}
+\newcommand{\GF}{\mathsf{GF}}
+\newcommand{\msg}{\mathsf{msg}}
+\newcommand{\negl}{\mathsf{negl}}
+\newcommand{\nonnegl}{\mathsf{nonnegl}}
+\newcommand{\st}{\mathsf{st}}
+\newcommand{\adv}{\cA}
+\newcommand{\hyb}{\mathsf{Hyb}}
+\newcommand{\poly}{\mathsf{poly}}
+
+% Math Notation
+\newcommand{\getsr}{\stackrel{\$}{\gets}}
+\newcommand{\bin}{\{0,1\}}
+\newcommand{\bit}{\bin}
+
+\newcommand{\duedate}{Friday November 1st, 2024 at 8:59pm via Gradescope}
+
+\newif\ifsol
+\soltrue
+
+\begin{document}
+\section*{CS 276: Homework 6\\ {\small Due Date: \duedate} }
+
+\section{The OR of Two Hash Proof Systems}
+We will present a hash proof system for the language of DDH tuples and then build a hash proof system for the OR of two such proof systems.
+
+\begin{definition}[Hash Proof System]
+    A hash proof system (HPS) is a tuple of algorithms $(\Gen, \mathsf{SKHash}, \mathsf{PKHash})$ with the following syntax:
+    \begin{itemize}
+        \item $\Gen$ takes a security parameter $1^\secp$ and outputs a public key $\pk$ and a secret key $\sk$.
+        \item $\mathsf{SKHash}$: Takes $\sk$ and an instance $x \in \cX$ and outputs $y \in \cY$.
+        \item $\mathsf{PKHash}$: Takes $\pk$, an instance $x \in \cX$, and a witness $w$ and outputs $y \in \cY$.
+    \end{itemize}
+    Note that $\cX$ is the input space, and $\cY$ is the output space.
+    
+    The HPS satisfies the following properties:
+    \begin{itemize}
+        \item \textbf{Correctness:} If $x \in L$ and $w$ is a valid witness for $x$, then $\mathsf{SKHash}(\sk, x) = \mathsf{PKHash}(\pk, x, w)$.
+        \item \textbf{Smoothness:} For any $x \notin L$, the following distributions are identical:
+        \begin{align*}
+            \{(\pk, y) &: (\pk, \sk) \gets \Gen(1^\secp), y \gets \mathsf{SKHash}(\sk, x)\}\\
+            \{(\pk, y) &: (\pk, \sk) \gets \Gen(1^\secp), y \getsr \mathcal{Y}\}
+        \end{align*}
+    \end{itemize}
+\end{definition}
+
+\subsection{HPS for DDH tuples}
+We will present an HPS for the language of DDH tuples.
+
+Let $\bbG$ be a cyclic group of order $p$, where $p$ is a large prime. Let $g, h$ be two generators of $\bbG$. Let the DDH language $L$ be the following:
+\[L = \{(g^w, h^w) \in \bbG^2 : w \in \bbZ_p\}\]
+\footnote{Note that the DDH problem asks an adversary to distinguish $(g, h, g^w, h^w)$ from $(g, h, g^w, h^v)$, for $h \getsr \bbG$ and $(w, v) \getsr \bbZ_p^2$, so the ability to decide whether a given tuple belongs to $L$ is sufficient to solve DDH.}
+
+Let $\cX = \bbG^2$, let $x = (a, b) \in \cX$, and let $\cY = \bbG$. For any tuple $x = (g^w, h^w) \in L$, let $w$ serve as the witness. Then we can construct a hash proof system for $L$ as follows:
+
+\begin{definition}[HPS For The DDH Language $L$]\label{def:hps-for-DDH-language}
+$ $
+\begin{itemize}
+    \item $\Gen(1^\secp)$: Sample $\sk = (r, s) \leftarrow \bbZ_p^2$. Let $\pk = g^r \cdot h^s$. Then output $(\pk, \sk)$.
+    \item $\mathsf{SKHash}(\sk, x)$: Output $y = a^r \cdot b^s$.
+    \item $\mathsf{PKHash}(\pk, x, w)$: Output $y = \pk^w$.
+\end{itemize}
+\end{definition}
+
+\paragraph{Question 1:} Prove that the HPS constructed above satisfies correctness and smoothness.
+
+\ifsol
+\vspace{5mm}
+\begin{solution}
+TBD
+\end{solution}
+\fi
+
+
+\subsection{HPS for the OR of two languages}
+Now we will construct a HPS for the OR of two DDH languages, with the help of a bilinear map.
+
+Let $\bbG_0$ and $\bbG_1$ be cyclic groups of order $p$, where $p$ is a large prime. Let $(g_0, h_0)$ be generators of $\bbG_0$, and let $(g_1, h_1)$ be generators of $\bbG_1$. Let us define the following languages:
+\begin{align*}
+    L_0 &= \{(g_0^{w}, h_0^{w}) \in \bbG_0^2 : w \in \bbZ_p\}\\
+    L_1 &= \{(g_1^{w}, h_1^{w}) \in \bbG_1^2 : w \in \bbZ_p\}\\
+    L_\lor &= \{(a_0, b_0, a_1, b_1) \in \bbG_0^2 \times \bbG_1^2 : (a_0, b_0) \in L_0 \lor (a_1, b_1) \in L_1\}
+\end{align*}
+Let $x = (a_0, b_0, a_1, b_1)$, and let the witness for $x \in L_\lor$ be a value $w \in \bbZ_p$ such that either (1) $a_0 = g_0^w$ and $b_0 = h_0^w$ or (2) $a_1 = g_1^w$ and $b_1 = h_1^w$.
+
+Furthermore, let $e : \bbG_0 \times \bbG_1 \to \bbG_T$ be an efficiently computable pairing function that satisfies:
+\[e(g_0^r, g_1^s) = e(g_0, g_1)^{r \cdot s}\]
+for any $r, s \in \bbZ_p$.
+
+\paragraph{Question 2:} Construct a HPS for $L_\lor$, and prove that it satisfies correctness and smoothness.
+
+\ifsol
+\vspace{5mm}
+\begin{solution}
+TBD
+\end{solution}
+\fi
+
+
+\section{Identity-Based Encryption from LWE}
+We will construct identity-based encryption (IBE) and prove security from the decisional LWE assumption.
+
+\paragraph{Parameters and Notation:} 
+Let $n$ be the security parameter. Let $q \in [\frac{n^4}{2}, n^4]$ be a large prime modulus. Let $m = 20 n \log n$, $\alpha = \frac{1}{m^4 \cdot \log^2 m}$, $L = m^{2.5}$, $s = m^{2.5} \cdot \log m$.
+
+Let $\chi$ be a Gaussian-weighted probability distribution over $\bbZ_q$ with mean $0$ and standard deviation $\frac{q \cdot \alpha}{\sqrt{2 \pi}}$.
+
+Let $H:\bit^* \to \bbZ_q^n$ be a random oracle. 
+
+\begin{definition}[Decisional LWE Assumption]\label{def:decisional-LWE-assumption}
+    For any $m' \geq m$, the following two distributions are computationally indistinguishable:
+    \begin{align*}
+        &\{(\bfA, \bfu) : \bfA \getsr \bbZ_q^{n \times m'}, \bfs \getsr \bbZ_q^{n}, \bfe \getsr \chi^{m'}, \bfu = \bfA^T \cdot \bfs + \bfe\}\\
+        &\{(\bfA, \bfu) : \bfA \getsr \bbZ_q^{n \times m'}, \bfu \getsr \bbZ_q^{m'}\}
+    \end{align*}
+\end{definition}
+
+\paragraph{Helper Functions:} Our construction will use the following helper functions:
+\begin{itemize}
+    \item $\mathsf{TrapdoorSample}(1^n) \to \bfA, \bfT$: Samples two matrices $\bfA \gets \bbZ_q^{n \times m}$ and $\bfT \gets \bbZ_q^{m \times m}$ such that $\bfA$ is statistically close to uniformly random, $\mathsf{ker}(\bfA) = \mathsf{column\text{-}span}(\bfT)$, and every column of $\bfT$ is short: $\|\bfT \cdot \hat{e}_i\| \leq L$ for all $i \in [m]$. In other words, $\bfT$ is a short basis of $\mathsf{ker}(\bfA)$.
+    \item $\mathsf{PreimageSample}(\bfA, \bfT, \bfv)$: Samples $\bfe$ such that $\bfA \cdot \bfe = \bfv \mod q$ from a distribution proportional to a discrete Gaussian with mean $\mathbf{0}$ and standard deviation $s$. In other words, $\bfe$ is a short vector in the preimage of $\bfv$.
+\end{itemize}
+
+The following lemma will be useful.
+\begin{lemma}\label{thm:gaussians-produce-small-values}
+For $\bfv \in \bbZ_q^m$ sampled from a discrete Gaussian distribution with mean $\mathbf{0}$ and a sufficiently large standard deviation $s$, $\Pr[\|\bfv\| > s \sqrt{m}] \leq \negl(m)$.
+\end{lemma}
+
+\paragraph{Construction:}
+\begin{itemize}
+    \item $\Setup(1^n)$: Sample 
+    \[\bfA, \bfT \gets \mathsf{TrapdoorSample}(1^n)\]
+    Finally output $\mpk = \bfA$ and $\msk = \bfT$.
+    \item $\Gen(\msk, ID)$: Compute $\bfv = H(ID)$. Then sample a short vector
+    \[\bfe \gets \mathsf{PreimageSample}(\bfA, \bfT, \bfv)\]
+    Note that $\bfA \cdot \bfe = \bfv \mod q$. Finally, output $\sk_{ID} = \bfe$.
+    \item $\Enc(\mpk, ID, m)$: Let $m \in \bit$. Sample $\bfs \getsr \bbZ_q^n$, $\bfx \gets \chi^m$ and $x \gets \chi$. Then compute $\bfv = H(ID)$, and 
+    \begin{align*}
+        \bfp &= \bfA^T \cdot \bfs + \bfx\\
+        c &= \bfv^T \cdot \bfs + x + m \cdot \lfloor q/2 \rfloor
+    \end{align*}
+    Output $\ct = (\bfp, c)$.
+    \item $\Dec(\sk_{ID}, \ct)$: Parse $\sk_{ID} = \bfe$ and $\ct = (\bfp, c)$. Compute
+    \[\mu = c - \bfe^T \cdot \bfp\]
+    If $|\mu - q/2| \leq q/4$, then output $m'=1$. Otherwise, output $m' = 0$.
+\end{itemize}
+
+\paragraph{Question:} Prove that the IBE construction given above is correct (except with negligible probability) and secure assuming decisional LWE (def. \ref{def:decisional-LWE-assumption}).
+
+\ifsol
+\vspace{5mm}
+\begin{solution}
+TBD
+\end{solution}
+\fi
+
+\end{document}
