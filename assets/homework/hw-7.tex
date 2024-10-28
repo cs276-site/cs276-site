@@ -1,0 +1,169 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate,comment}
+\usepackage{url}
+\usepackage{color}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{mdframed}
+% \input{preamble}
+
+\pagestyle{fancy}
+\setlength{\headheight}{20pt}
+\setlength{\headsep}{20pt}
+\fancyhead[L]{\small{CS 276, Fall 2024}}
+\fancyhead[R]{\small{Prof. Sanjam Garg}}
+
+\newcommand\custombox[2]{%%
+    \fbox{\rule{#1}{0pt}\rule[-0.5ex]{0pt}{#2}}}
+
+\newcommand\answerbox{%%
+    \fbox{\rule{1in}{0pt}\rule[-0.5ex]{0pt}{4ex}}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{assumption}[theorem]{Assumption}
+\newenvironment{solution}{\color{blue}\noindent{\bf Solution}\hspace*{1em}}{\qed\medskip}
+\newcommand{\proof}{\noindent{\bf Proof. }} %% To begin a proof write \proof
+\newcommand{\qed}{\mbox{}\hspace*{\fill}\nolinebreak\mbox{$\rule{0.6em}{0.6em}$}} %%to end your proof write $\qed$.
+
+\numberwithin{equation}{section}
+
+% mathbf
+\newcommand{\bfA}{\mathbf{A}}
+\newcommand{\bfb}{\mathbf{b}}
+\newcommand{\bfe}{\mathbf{e}}
+\newcommand{\bfI}{\mathbf{I}}
+\newcommand{\bfM}{\mathbf{M}}
+\newcommand{\bfm}{\mathbf{m}}
+\newcommand{\bfp}{\mathbf{p}}
+\newcommand{\bfr}{\mathbf{r}}
+\newcommand{\bfs}{\mathbf{s}}
+\newcommand{\bfT}{\mathbf{T}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfx}{\mathbf{x}}
+
+% mathbb
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+% mathcal
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+
+% Crypto terms
+\newcommand{\Setup}{\mathsf{Setup}}
+\newcommand{\Gen}{\mathsf{Gen}}
+\newcommand{\Enc}{\mathsf{Enc}}
+\newcommand{\Dec}{\mathsf{Dec}}
+\newcommand{\gen}{\mathsf{Gen}}
+\newcommand{\enc}{\mathsf{Enc}}
+\newcommand{\dec}{\mathsf{Dec}}
+\newcommand{\Sign}{\mathsf{Sign}}
+\newcommand{\sign}{\mathsf{Sign}}
+\newcommand{\Verify}{\mathsf{Verify}}
+\newcommand{\verify}{\mathsf{Verify}}
+\newcommand{\MAC}{\mathsf{MAC}}
+\newcommand{\mac}{\mathsf{Mac}}
+\newcommand{\pk}{\mathsf{pk}}
+\newcommand{\sk}{\mathsf{sk}}
+\newcommand{\mpk}{\mathsf{mpk}}
+\newcommand{\msk}{\mathsf{msk}}
+\newcommand{\ct}{\mathsf{ct}}
+\newcommand{\secp}{\lambda}
+
+\newcommand{\Rank}{\mathsf{Rank}}
+\newcommand{\GF}{\mathsf{GF}}
+\newcommand{\msg}{\mathsf{msg}}
+\newcommand{\negl}{\mathsf{negl}}
+\newcommand{\nonnegl}{\mathsf{nonnegl}}
+\newcommand{\st}{\mathsf{st}}
+\newcommand{\adv}{\cA}
+\newcommand{\hyb}{\mathsf{Hyb}}
+\newcommand{\poly}{\mathsf{poly}}
+
+% Math Notation
+\newcommand{\getsr}{\stackrel{\$}{\gets}}
+\newcommand{\bin}{\{0,1\}}
+\newcommand{\bit}{\bin}
+
+\newcommand{\duedate}{Friday November 8th, 2024 at 8:59pm via Gradescope}
+
+
+\begin{document}
+\section*{CS 276: Homework 7\\ {\small Due Date: \duedate} }
+
+\section{Circular-Secure Encryption}
+We saw in lecture that fully homomorphic encryption (FHE) can be constructed from a leveled FHE scheme that also satisfies circular security. \cite{BGV11} constructed leveled FHE from LWE, but it is not known whether their scheme satisfies circular security. In fact, for every leveled FHE scheme that we have, we do not know how to prove circular security without simply assuming it by fiat.
+
+This begs the question: is circular security hard to prove for every encryption scheme? In fact it is not. We will prove below that a natural encryption scheme based on LWE is circular-secure.
+
+\paragraph{Defining Circular Security:} Circular security states that the encryption scheme remains CPA-secure even when the adversary receives $\Enc(\sk)$. 
+
+\begin{definition}[Circular Security]\label{def:circular-security}
+Given an encryption scheme $\Pi = (\Gen, \Enc, \Dec)$ and an adversary $\cA$, let us define the circular security game $\mathsf{Circ\text{-}Game}(\Pi, \cA, 1^\secp)$ to be the same as the CPA security game except the adversary receives $\Enc(\sk)$ right after the challenger runs $\Gen(1^\secp)$.
+
+$\Pi$ satisfies \textbf{circular security} if for every PPT adversary $\cA$,
+\[\Pr[\mathsf{Circ\text{-}Game}(\Pi, \cA, 1^\secp) \to 1] \leq \frac{1}{2} + \negl(\secp)\]
+\end{definition}
+
+Circular security does not hold for every CPA-secure encryption scheme because in the CPA security game, the only ciphertexts the adversary sees are encryptions of messages chosen by the adversary. Since the adversary does not know $\sk$ a priori, it will not, except with negligible probability, receive $\Enc(\sk)$. So the fact that the circular security game gives $\Enc(\sk)$ to the adversary seems to give the adversary additional power.
+
+\paragraph{Question 1:} Construct a public key encryption (PKE) scheme $(\Gen', \Enc', \Dec')$ that is CPA-secure and correct, \textit{but not circular-secure}. Your construction can start with a CPA-secure PKE scheme $(\Gen, \Enc, \Dec)$ as well as any other primitive implied by that primitive.
+
+Tip: In your answer, you should prove that your construction satisfies CPA security and correctness, and does not satisfy circular security.
+
+\vspace{5mm}
+\begin{solution}
+TBD
+\end{solution}
+
+\vspace{5mm}
+Now we will consider an encryption scheme that is circular-secure. The following secret-key encryption scheme is correct and CPA-secure, assuming LWE.\footnote{We will not state the parameters explicitly for this scheme, but they can be assumed to be similar to the parameters of the IBE scheme from homework 6.}
+
+\begin{itemize}
+    \item $\Gen(1^n):$ Sample $\bfs \getsr \bit^n$ and output $\sk = \bfs$.
+    \item $\Enc(\sk, \bfm):$ Let $\bfm \in \bit^m$ for any $m = \poly(n)$. Sample $\bfA \getsr \bbZ_q^{n \times m}$ and $\bfe \gets \chi^m$. Finally compute 
+    \[\bfu = \bfA^T \cdot \bfs + \bfe + \left\lfloor \frac{q}{2} \right\rfloor \cdot \bfm\]
+    and output $c = \left(\bfA, \bfu\right)$
+    \item $\Dec(\sk, c):$ Compute 
+    \[\vec{\mu} = \bfu - \bfA^T \cdot \bfs\]
+    For each index $i \in [m]$, if $\left|\vec{\mu}_i - \left\lfloor \frac{q}{2}\right\rfloor\right| \leq q/4$, then set $\bfm'_i = 1$. Else set $\bfm'_i = 0$. Finally, output $\bfm' = (\bfm'_1, \dots, \bfm'_m)$.
+\end{itemize}
+
+\paragraph{Question 2:} Prove that the encryption scheme constructed above is circular-secure, assuming that it is CPA-secure.
+
+\vspace{5mm}
+\begin{solution}
+TBD
+\end{solution}
+
+\bibliography{cryptobib/abbrev0,cryptobib/crypto,smoser}
+\bibliographystyle{alpha}
+\end{document}
