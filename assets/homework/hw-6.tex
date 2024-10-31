@@ -40,13 +40,16 @@
 \numberwithin{equation}{section}
 
 % mathbf
+\newcommand{\bfb}{\mathbf{b}}
 \newcommand{\bfe}{\mathbf{e}}
 \newcommand{\bfp}{\mathbf{p}}
+\newcommand{\bfr}{\mathbf{r}}
 \newcommand{\bfs}{\mathbf{s}}
 \newcommand{\bfu}{\mathbf{u}}
 \newcommand{\bfv}{\mathbf{v}}
 \newcommand{\bfx}{\mathbf{x}}
 \newcommand{\bfA}{\mathbf{A}}
+\newcommand{\bfM}{\mathbf{M}}
 \newcommand{\bfT}{\mathbf{T}}
 
 % mathbb
@@ -108,10 +111,7 @@
 \newcommand{\bin}{\{0,1\}}
 \newcommand{\bit}{\bin}
 
-\newcommand{\duedate}{Friday November 1st, 2024 at 8:59pm via Gradescope}
-
-\newif\ifsol
-\soltrue
+\newcommand{\duedate}{Saturday November 2nd, 2024 at 8:59pm via Gradescope}
 
 \begin{document}
 \section*{CS 276: Homework 6\\ {\small Due Date: \duedate} }
@@ -151,7 +151,7 @@ Let $\cX = \bbG^2$, let $x = (a, b) \in \cX$, and let $\cY = \bbG$. For any tupl
 \begin{definition}[HPS For The DDH Language $L$]\label{def:hps-for-DDH-language}
 $ $
 \begin{itemize}
-    \item $\Gen(1^\secp)$: Sample $\sk = (r, s) \leftarrow \bbZ_p^2$. Let $\pk = g^r \cdot h^s$. Then output $(\pk, \sk)$.
+    \item $\Gen(1^\secp)$: Sample $\sk = (r, s) \getsr \bbZ_p^2$. Let $\pk = g^r \cdot h^s$. Then output $(\pk, \sk)$.
     \item $\mathsf{SKHash}(\sk, x)$: Output $y = a^r \cdot b^s$.
     \item $\mathsf{PKHash}(\pk, x, w)$: Output $y = \pk^w$.
 \end{itemize}
@@ -159,12 +159,10 @@ $ $
 
 \paragraph{Question 1:} Prove that the HPS constructed above satisfies correctness and smoothness.
 
-\ifsol
 \vspace{5mm}
 \begin{solution}
 TBD
 \end{solution}
-\fi
 
 
 \subsection{HPS for the OR of two languages}
@@ -182,16 +180,30 @@ Furthermore, let $e : \bbG_0 \times \bbG_1 \to \bbG_T$ be an efficiently computa
 \[e(g_0^r, g_1^s) = e(g_0, g_1)^{r \cdot s}\]
 for any $r, s \in \bbZ_p$.
 
-\paragraph{Question 2:} Construct a HPS for $L_\lor$, and prove that it satisfies correctness and smoothness.
+Now, we can construct a HPS for $L_\lor$.
+\begin{definition}[HPS For $L_\lor$]\label{def:hps-for-OR-language}
+$ $
+\begin{itemize}
+    \item $\Gen(1^\secp)$: Sample $\sk = (r, s, t, u) \getsr \bbZ_p^4$. Compute
+    \[\pk = (\pk_0, \pk_1, \pk_2, \pk_3) = \left(g_0^{r} \cdot h_0^{t}, g_0^{s} \cdot h_0^{u}, g_1^{r} \cdot h_1^{s}, g_1^{t} \cdot h_1^{u}\right)\]
+    Finally, output $(\pk, \sk)$.
+    \item $\mathsf{SKHash}(\sk, x)$: Given $x = (a_0, b_0, a_1, b_1)$, compute and output
+    \[y = e(a_0, a_1)^{r} \cdot e(a_0, b_1)^{s} \cdot e(b_0, a_1)^{t} \cdot e(b_0, b_1)^{u}\]
+    \item $\mathsf{PKHash}(\pk, x, w)$: If $a_0 = g_0^w$ and $b_0 = h_0^w$ ($(a_0, b_0) \in L_0$), then compute and output
+    \[y = e(\pk_0, a_1)^w \cdot e(\pk_1, b_1)^w\]
+    If $a_1 = g_1^w$ and $b_1 = h_1^w$ ($(a_1, b_1) \in L_1$), then compute and output
+    \[y = e(a_0, \pk_2)^w \cdot e(b_0, \pk_3)^w\]
+\end{itemize}
+\end{definition}
 
-\ifsol
+\paragraph{Question 2:} Prove that the HPS for $L_\lor$ satisfies correctness and smoothness.
+
 \vspace{5mm}
 \begin{solution}
 TBD
 \end{solution}
-\fi
 
-
+\pagebreak
 \section{Identity-Based Encryption from LWE}
 We will construct identity-based encryption (IBE) and prove security from the decisional LWE assumption.
 
@@ -229,24 +241,22 @@ For $\bfv \in \bbZ_q^m$ sampled from a discrete Gaussian distribution with mean 
     \item $\Gen(\msk, ID)$: Compute $\bfv = H(ID)$. Then sample a short vector
     \[\bfe \gets \mathsf{PreimageSample}(\bfA, \bfT, \bfv)\]
     Note that $\bfA \cdot \bfe = \bfv \mod q$. Finally, output $\sk_{ID} = \bfe$.
-    \item $\Enc(\mpk, ID, m)$: Let $m \in \bit$. Sample $\bfs \getsr \bbZ_q^n$, $\bfx \gets \chi^m$ and $x \gets \chi$. Then compute $\bfv = H(ID)$, and 
+    \item $\Enc(\mpk, ID, b)$: Let $b \in \bit$. Sample $\bfs \getsr \bbZ_q^n$, $\bfx \gets \chi^m$ and $x \gets \chi$. Then compute $\bfv = H(ID)$, and 
     \begin{align*}
         \bfp &= \bfA^T \cdot \bfs + \bfx\\
-        c &= \bfv^T \cdot \bfs + x + m \cdot \lfloor q/2 \rfloor
+        c &= \bfv^T \cdot \bfs + x + b \cdot \lfloor q/2 \rfloor
     \end{align*}
     Output $\ct = (\bfp, c)$.
     \item $\Dec(\sk_{ID}, \ct)$: Parse $\sk_{ID} = \bfe$ and $\ct = (\bfp, c)$. Compute
     \[\mu = c - \bfe^T \cdot \bfp\]
-    If $|\mu - q/2| \leq q/4$, then output $m'=1$. Otherwise, output $m' = 0$.
+    If $|\mu - q/2| \leq q/4$, then output $b'=1$. Otherwise, output $b' = 0$.
 \end{itemize}
 
 \paragraph{Question:} Prove that the IBE construction given above is correct (except with negligible probability) and secure assuming decisional LWE (def. \ref{def:decisional-LWE-assumption}).
 
-\ifsol
 \vspace{5mm}
 \begin{solution}
 TBD
 \end{solution}
-\fi
 
 \end{document}
