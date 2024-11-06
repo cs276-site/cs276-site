@@ -1,0 +1,166 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate,comment}
+\usepackage{url}
+\usepackage{color}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{mdframed}
+
+\pagestyle{fancy}
+\setlength{\headheight}{20pt}
+\setlength{\headsep}{20pt}
+\fancyhead[L]{\small{CS 276, Fall 2024}}
+\fancyhead[R]{\small{Prof. Sanjam Garg}}
+
+\newcommand\custombox[2]{%%
+    \fbox{\rule{#1}{0pt}\rule[-0.5ex]{0pt}{#2}}}
+
+\newcommand\answerbox{%%
+    \fbox{\rule{1in}{0pt}\rule[-0.5ex]{0pt}{4ex}}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{assumption}[theorem]{Assumption}
+\newenvironment{solution}{\color{blue}\noindent{\bf Solution}\hspace*{1em}}{\qed\medskip}
+\newcommand{\proof}{\noindent{\bf Proof. }} %% To begin a proof write \proof
+\newcommand{\qed}{\mbox{}\hspace*{\fill}\nolinebreak\mbox{$\rule{0.6em}{0.6em}$}} %%to end your proof write $\qed$.
+
+\numberwithin{equation}{section}
+
+% mathbf
+\newcommand{\bfA}{\mathbf{A}}
+\newcommand{\bfa}{\mathbf{a}}
+\newcommand{\bfb}{\mathbf{b}}
+\newcommand{\bfc}{\mathbf{c}}
+\newcommand{\bfe}{\mathbf{e}}
+\newcommand{\bfI}{\mathbf{I}}
+\newcommand{\bfM}{\mathbf{M}}
+\newcommand{\bfm}{\mathbf{m}}
+\newcommand{\bfp}{\mathbf{p}}
+\newcommand{\bfr}{\mathbf{r}}
+\newcommand{\bfs}{\mathbf{s}}
+\newcommand{\bfT}{\mathbf{T}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfx}{\mathbf{x}}
+\newcommand{\bfy}{\mathbf{y}}
+
+% mathbb
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+% mathcal
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+
+% Crypto terms
+\newcommand{\Setup}{\mathsf{Setup}}
+\newcommand{\Gen}{\mathsf{Gen}}
+\newcommand{\Enc}{\mathsf{Enc}}
+\newcommand{\Dec}{\mathsf{Dec}}
+\newcommand{\gen}{\mathsf{Gen}}
+\newcommand{\enc}{\mathsf{Enc}}
+\newcommand{\dec}{\mathsf{Dec}}
+\newcommand{\Sign}{\mathsf{Sign}}
+\newcommand{\sign}{\mathsf{Sign}}
+\newcommand{\Verify}{\mathsf{Verify}}
+\newcommand{\verify}{\mathsf{Verify}}
+\newcommand{\MAC}{\mathsf{MAC}}
+\newcommand{\mac}{\mathsf{Mac}}
+\newcommand{\pk}{\mathsf{pk}}
+\newcommand{\sk}{\mathsf{sk}}
+\newcommand{\mpk}{\mathsf{mpk}}
+\newcommand{\msk}{\mathsf{msk}}
+\newcommand{\ct}{\mathsf{ct}}
+\newcommand{\secp}{\lambda}
+
+\newcommand{\Rank}{\mathsf{Rank}}
+\newcommand{\GF}{\mathsf{GF}}
+\newcommand{\msg}{\mathsf{msg}}
+\newcommand{\negl}{\mathsf{negl}}
+\newcommand{\nonnegl}{\mathsf{nonnegl}}
+\newcommand{\st}{\mathsf{st}}
+\newcommand{\adv}{\cA}
+\newcommand{\hyb}{\mathsf{Hyb}}
+\newcommand{\poly}{\mathsf{poly}}
+
+% Math Notation
+\newcommand{\getsr}{\stackrel{\$}{\gets}}
+\newcommand{\bin}{\{0,1\}}
+\newcommand{\bit}{\bin}
+
+\newcommand{\duedate}{Saturday November 16th, 2024 at 8:59pm via Gradescope}
+
+\newif\ifsol
+\soltrue
+
+\begin{document}
+\section*{CS 276: Homework 8\\ {\small Due Date: \duedate} }
+
+\section{A Proof System for Knowledge of a Preimage}
+We will study a general proof system to prove knowledge of a secret preimage $\bfx$ of some public output $\bfy$, for any homomorphic function over a cryptographic group. This protocol generalizes many proof systems, including the Schnorr protocol (that proves knowledge of the discrete log of a group element) and the Chaum-Pedersen protocol (that proves that a given triple of group elements is a DDH triple).
+
+\paragraph{Definitions:} Let $\bbG$ be a cryptographic group of prime order $p$, where $\frac{1}{p} = \negl(\secp)$. Let $d_{in}, d_{out} \in \bbN$ be the dimensions of the input and output spaces, respectively. A function $F$ mapping $\bbZ_p^{d_{in}} \to \bbG^{d_{out}}$ is \textit{homomorphic} if for any $\bfx, \bfx' \in \bbZ_p^{d_{in}}$, $F(\bfx + \bfx') = F(\bfx) \cdot F(\bfx')$. \footnote{Note that the typical group operation for $\bbZ_p$ is addition, and the group operation for $\bbG$ is multiplication, so the homomorphic property simply states that applying the group operation to the inputs before applying $F$ is equivalent to applying the group operation to the outputs after applying $F$.}
+
+The proof system will prove knowledge of a secret preimage $\bfx$ of a public output $\bfy$. An \textit{instance} of the language $L$ is any tuple $(F, \bfy)$ such that $F$ is a homomorphic function mapping $\bbZ_p^{d_{in}} \to \bbG^{d_{out}}$, and $\bfy \in \mathsf{Im}(F)$. The corresponding \textit{witness} is an input $\bfx \in \bbZ_p^{d_{in}}$ such that $F(\bfx) = \bfy$.
+
+For example, if we set $F(\bfx) = g^\bfx$, then we obtain a protocol to prove knowledge of the discrete log $\bfx$ of a given group element $\bfy$. This is essentially the Schnorr protocol. If we set $F(\bfx) = (g^\bfx, h^\bfx)$, then we obtain a protocol to prove that $(g^\bfx, h, h^\bfx)$ are a DDH triple, which is essentially the Chaum-Pedersen protocol.
+
+\paragraph{The Protocol:}
+\begin{enumerate}
+    \item $P$ samples $\bfa \getsr \bbZ_p^{d_{in}}$, computes $\bfb = F(\bfa)$, and sends $\bfb$ to $V$.
+    \item $V$ samples $m \getsr \bbZ_p$ and sends $m$ to $P$.
+    \item $P$ computes $\bfc = m \cdot \bfx + \bfa$ and sends $\bfc$ to $V$.
+    \item $V$ checks whether
+    \[F(\bfc) = \bfy^m \cdot \bfb\]
+    If so, $V$ outputs $\mathsf{accept}$. If not, $V$ outputs $\mathsf{reject}$.
+\end{enumerate}
+
+\paragraph{Properties of the Protocol:}
+Let $P$ and $V$ be the honest prover and honest verifier, who must follow the protocol. Let $P^*$ and $V^*$ be a dishonest prover and verifier, who may deviate from the protocol arbitrarily. Next, the \textit{transcript} of the protocol is $(\bfb, m, \bfc)$, the list of messages sent between the prover and verifier during the protocol.
+
+The protocol should satisfy the following properties:
+\begin{itemize}
+    \item \textit{Completeness:} If $\bfy = F(\bfx)$, then the protocol between $P(F, \bfy, \bfx)$ and $V(F, \bfy)$ will result in $\mathsf{accept}$ with probability $1$.
+    \item \textit{Knowledge Soundness:} There exists an extractor $E$ that runs in expected polynomial time such that for every $F$ and every $\bfy \in \bbG^{d_{out}}$, if $\Pr[\langle P^*, V \rangle(F, \bfy) \to \mathsf{accept}]$ is non-negligible, then $\Pr[F(\bfx') = \bfy : \bfx' \gets E^{P^*}(F, \bfy)]$ is non-negligible as well.
+    
+    The notation $\langle P^*, V \rangle(F, \bfy) \to \mathsf{accept}$ is the event that the interaction between a dishonest prover $P^*$ and the honest verifier $V$ on inputs $(F, \bfy)$ results in $\mathsf{accept}$. The notation $E^{P^*}$ means that $E$ gets black-box access to $P^*$, which includes the ability to rewind $P^*$.
+    \item \textit{Honest-Verifier Zero-Knowledge:} For any valid witness-instance tuple $(\bfx, \bfy, F)$, which satisfies $\bfy = F(\bfx)$, the transcript of the protocol between $P(F, \bfy, \bfx)$ and $V(F, \bfy)$ can be efficiently simulated given only $(F, \bfy)$.
+\end{itemize}
+
+\paragraph{Question:} Prove that the protocol given above satisfies completeness, knowledge soundness, and honest-verifier zero-knowledge. Your proof should not require any computational assumptions.
+
+\ifsol
+\vspace{5mm}
+\begin{solution}
+TBD
+\end{solution}
+\fi
+
+\end{document}
