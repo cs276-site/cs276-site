@@ -1,0 +1,198 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate,comment}
+\usepackage{url}
+\usepackage{color}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{mdframed}
+
+\pagestyle{fancy}
+\setlength{\headheight}{20pt}
+\setlength{\headsep}{20pt}
+\fancyhead[L]{\small{CS 276, Fall 2024}}
+\fancyhead[R]{\small{Prof. Sanjam Garg}}
+
+\newcommand\custombox[2]{%%
+    \fbox{\rule{#1}{0pt}\rule[-0.5ex]{0pt}{#2}}}
+
+\newcommand\answerbox{%%
+    \fbox{\rule{1in}{0pt}\rule[-0.5ex]{0pt}{4ex}}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{assumption}[theorem]{Assumption}
+\newenvironment{solution}{\color{blue}\noindent{\bf Solution}\hspace*{1em}}{\qed\medskip}
+\newcommand{\proof}{\noindent{\bf Proof. }} %% To begin a proof write \proof
+\newcommand{\qed}{\mbox{}\hspace*{\fill}\nolinebreak\mbox{$\rule{0.6em}{0.6em}$}} %%to end your proof write $\qed$.
+
+\numberwithin{equation}{section}
+
+% mathbf
+\newcommand{\bfA}{\mathbf{A}}
+\newcommand{\bfa}{\mathbf{a}}
+\newcommand{\bfb}{\mathbf{b}}
+\newcommand{\bfc}{\mathbf{c}}
+\newcommand{\bfe}{\mathbf{e}}
+\newcommand{\bfI}{\mathbf{I}}
+\newcommand{\bfM}{\mathbf{M}}
+\newcommand{\bfm}{\mathbf{m}}
+\newcommand{\bfp}{\mathbf{p}}
+\newcommand{\bfr}{\mathbf{r}}
+\newcommand{\bfs}{\mathbf{s}}
+\newcommand{\bfT}{\mathbf{T}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfx}{\mathbf{x}}
+\newcommand{\bfy}{\mathbf{y}}
+
+% mathbb
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+% mathcal
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+
+% Crypto terms
+\newcommand{\Setup}{\mathsf{Setup}}
+\newcommand{\Gen}{\mathsf{Gen}}
+\newcommand{\Enc}{\mathsf{Enc}}
+\newcommand{\Dec}{\mathsf{Dec}}
+\newcommand{\gen}{\mathsf{Gen}}
+\newcommand{\enc}{\mathsf{Enc}}
+\newcommand{\dec}{\mathsf{Dec}}
+\newcommand{\Sign}{\mathsf{Sign}}
+\newcommand{\sign}{\mathsf{Sign}}
+\newcommand{\Prove}{\mathsf{Prove}}
+\newcommand{\Verify}{\mathsf{Verify}}
+\newcommand{\verify}{\mathsf{Verify}}
+\newcommand{\RO}{\mathsf{RO}}
+\newcommand{\MAC}{\mathsf{MAC}}
+\newcommand{\mac}{\mathsf{Mac}}
+\newcommand{\pk}{\mathsf{pk}}
+\newcommand{\sk}{\mathsf{sk}}
+\newcommand{\mpk}{\mathsf{mpk}}
+\newcommand{\msk}{\mathsf{msk}}
+\newcommand{\ct}{\mathsf{ct}}
+\newcommand{\secp}{\lambda}
+
+\newcommand{\Rank}{\mathsf{Rank}}
+\newcommand{\GF}{\mathsf{GF}}
+\newcommand{\msg}{\mathsf{msg}}
+\newcommand{\negl}{\mathsf{negl}}
+\newcommand{\nonnegl}{\mathsf{nonnegl}}
+\newcommand{\st}{\mathsf{st}}
+\newcommand{\adv}{\cA}
+\newcommand{\hyb}{\mathsf{Hyb}}
+\newcommand{\poly}{\mathsf{poly}}
+
+% Math Notation
+\newcommand{\getsr}{\stackrel{\$}{\gets}}
+\newcommand{\bin}{\{0,1\}}
+\newcommand{\bit}{\bin}
+
+\newcommand{\duedate}{Friday November 22nd, 2024 at 8:59pm via Gradescope}
+
+\begin{document}
+\section*{CS 276: Homework 9\\ {\small Due Date: \duedate} }
+
+\section{Simulation-Sound NIZKs}
+We will use the Fiat-Shamir transform to convert the interactive sigma protocol from homework 8 into a non-interactive zero-knowledge proof (NIZK). 
+
+We will also define the notion of simulation soundness for NIZKs, which combines soundness and zero-knowledge into one security definition. Simulation soundness essentially states that an adversary who sees simulated proofs of true and false statements of their choosing, cannot produce an accepting proof on a different false statement. 
+
+Simulation-sound NIZKs can be used to construct CCA2-secure encryption and signatures, among other applications.
+
+\paragraph{The Fiat-Shamir Transform:}
+Let us start with the sigma protocol from homework 8 and make it non-interactive by computing the verifier's message $m$ with a random oracle $\cH$ applied to the partial transcript of the protocol. This is known as the \textit{Fiat-Shamir transform}.\newline
+
+As in homework 8, let $\bbG$ be a cryptographic group of prime order $p$, where $\frac{1}{p} = \negl(\secp)$. Let $d_{in}, d_{out} \in \bbN$ be the dimensions of the input and output spaces, respectively. A function $F$ mapping $\bbZ_p^{d_{in}} \to \bbG^{d_{out}}$ is \textit{homomorphic} if for any $\bfx, \bfx' \in \bbZ_p^{d_{in}}$, $F(\bfx + \bfx') = F(\bfx) \cdot F(\bfx')$. An \textit{instance} of the language $L$ is any tuple $(F, \bfy)$ such that $F$ is a homomorphic function mapping $\bbZ_p^{d_{in}} \to \bbG^{d_{out}}$, and $\bfy \in \mathsf{Im}(F)$. The corresponding \textit{witness} is an input $\bfx \in \bbZ_p^{d_{in}}$ such that $F(\bfx) = \bfy$.
+
+Additionally, let us assume that if we sample $\bfx \getsr \bbZ_p^{d_{in}}$, then $F(\bfx)$ has min-entropy $\omega(\log^2(\secp))$. In other words, for any $\bfy \in \bbG^{d_{out}}$,
+\[\Pr_{\bfx \getsr \bbZ_p^{d_{in}}}[F(\bfx) = \bfy] \leq 2^{- \omega(\log^2(\secp))} = \negl(\secp)\]
+
+Also, let $\cH$ be a random oracle mapping $\bbG^{d_{out}} \times \bbG^{d_{out}} \to \bbZ_p$. Finally, the NIZK is a pair of algorithms $(\Prove, \Verify)$, which are constructed as follows.\newline
+
+\noindent\underline{$\Prove(\bfx, \bfy)$:}
+\begin{enumerate}
+    \item Sample $\bfa \getsr \bbZ_p^{d_{in}}$, and compute $\bfb = F(\bfa)$.
+    \item Compute $m = \cH(\bfy, \bfb)$.
+    \item Compute $\bfc = m \cdot \bfx + \bfa$ and output $\pi = (\bfb, \bfc)$.
+\end{enumerate}
+
+\noindent\underline{$\Verify(\bfy, \pi)$:}
+\begin{enumerate}
+    \item Compute $m = \cH(\bfy, \bfb)$.
+    \item If $F(\bfc) = \bfy^m \cdot \bfb$, then output $\mathsf{accept}$. Else output $\mathsf{reject}$.
+\end{enumerate}
+
+\paragraph{Zero-Knowledge:}
+Let us define the notion of zero-knowledge for NIZKs. 
+
+\begin{definition}[Zero-Knowledge Adversary and Simulator]
+    The zero-knowledge adversary $\cA$ is run in one of the following games, $\cG_{\mathsf{Real}}$ or $\cG_{\mathsf{Ideal}}$, and they are not told which one. $\cA$ makes \textit{proof queries} of the form $(\bfx, \bfy) \in \bbZ_p^{d_{in}} \times \bbG^{d_{out}}$, where $F(\bfx) = \bfy$, and \textit{random oracle queries} of the form $(\bfy, \bfb) \in \bbG^{d_{out}} \times \bbG^{d_{out}}$, and finally they output a bit $b$ in order to guess which game they are in.
+    
+    In the \textit{real world}, $\cG_{\mathsf{Real}}$, the challenger samples a random oracle $\cH$ and responds to each random oracle query with $\cH(\bfy, \bfb)$. For each proof query $(\bfx, \bfy)$, the challenger responds with $\pi = \Prove(\bfx, \bfy)$.
+
+    In the \textit{ideal world}, $\cG_{\mathsf{Ideal}}$, there is a PPT simulator $\cS$ that handles the queries. $\cS$ receives each random oracle query $(\bfy, \bfb)$ and computes the response $\cS.\RO(\bfy, \bfb)$. For each proof query, $(\bfx, \bfy)$ such that $F(\bfx) = \bfy$, $\cS$ only receives $\bfy$ and must compute the response $\cS.\Prove(\bfy)$.
+\end{definition}
+
+\begin{definition}[Zero-Knowledge for NIZKs]\label{def:zk-for-nizks}
+    The NIZK satisfies \textbf{zero-knowledge} if there exists a PPT simulator $\cS$ such that for all PPT adversaries $\cA$, 
+    \[\left|\Pr[\cA \to 1 \text{ in } \cG_{\mathsf{Real}}] - \Pr[\cA \to 1 \text{ in } \cG_{\mathsf{Ideal}}]\right| = \negl(\secp)\]
+\end{definition}
+
+\paragraph{Simulation Soundness:} In the definition of zero-knowledge, $\cS$ is only required to output an accepting proof for a statement in the language (i.e. an $(\bfx, \bfy)$ for which $F(\bfx) = \bfy$). Simulation soundness allows the adversary to run $\cS$ on false statements as well (where $\bfy \notin \mathsf{Im}(F)$) and guarantees that the adversary cannot forge an accepting proof on a new false statement.
+
+\begin{definition}[Simulation Soundness Game $\cG_{\mathsf{SS}}$]
+    The simulation soundness adversary $\cB$ interacts with $\cS$ directly. $\cB$ can make proof queries of the form $\bfy \in \bbG^{d_{out}}$ and receives the response $\cS.\Prove(\bfy)$. $\cB$ can also make random oracle queries of the form $(\bfy, \bfb) \in \bbG^{d_{out}} \times \bbG^{d_{out}}$ and receives the response $\cS.\RO(\bfy, \bfb)$.
+
+    Finally $\cB$ outputs a statement-proof tuple $(\bfy^*, \pi^*)$, which the challenger verifies by computing $\Verify(\bfy^*, \pi^*)$. If $\Verify$ queries the random oracle, the challenger queries $\cS.\RO$. 
+    
+    $\cB$ wins $\cG_{\mathsf{SS}}$ if $(\bfy^*, \pi^*)$ was not a previous query-response pair for $\cS.\Prove$, and $\Verify(\bfy^*, \pi^*)$ outputs $\mathsf{accept}$, and $\bfy \notin \mathsf{Im}(F)$ ($\bfy$ is a false statement).
+\end{definition}
+
+\begin{definition}[Simulation Soundness]
+    A NIZK is simulation-sound if there exists a PPT simulator $\cS$ such that the following hold:
+    \begin{itemize}
+        \item \textit{Zero Knowledge:} For all PPT zero-knowledge adversaries $\cA$,
+        \[\left|\Pr[\cA \to 1 \text{ in } \cG_{\mathsf{Real}}] - \Pr[\cA \to 1 \text{ in } \cG_{\mathsf{Ideal}}]\right| = \negl(\secp)\]
+        \item \textit{Unforgeability:} For all PPT simulation soundness adversaries $\cB$,
+        \[\Pr[\cB \text{ wins } \cG_{\mathsf{SS}}] = \negl(\secp)\]
+    \end{itemize}
+\end{definition}
+
+\paragraph{Question:} Prove that the NIZK $(\Prove, \Verify)$ constructed above satisfies simulation soundness.
+
+\vspace{5mm}
+\begin{solution}
+TBD
+\end{solution}
+
+\end{document}
