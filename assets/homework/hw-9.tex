@@ -119,6 +119,9 @@
 
 \newcommand{\duedate}{Friday November 22nd, 2024 at 8:59pm via Gradescope}
 
+\newif\ifsol
+\soltrue
+
 \begin{document}
 \section*{CS 276: Homework 9\\ {\small Due Date: \duedate} }
 
@@ -137,7 +140,11 @@ As in homework 8, let $\bbG$ be a cryptographic group of prime order $p$, where 
 Additionally, let us assume that if we sample $\bfx \getsr \bbZ_p^{d_{in}}$, then $F(\bfx)$ has min-entropy $\omega(\log^2(\secp))$. In other words, for any $\bfy \in \bbG^{d_{out}}$,
 \[\Pr_{\bfx \getsr \bbZ_p^{d_{in}}}[F(\bfx) = \bfy] \leq 2^{- \omega(\log^2(\secp))} = \negl(\secp)\]
 
-Also, let $\cH$ be a random oracle mapping $\bbG^{d_{out}} \times \bbG^{d_{out}} \to \bbZ_p$. Finally, the NIZK is a pair of algorithms $(\Prove, \Verify)$, which are constructed as follows.\newline
+Let us also assume that the sigma protocol from homework 8 has \textbf{unique responses}. This means that for any $(\bfy, \bfb, m)$, there is at most one value of $\bfc$ for which $F(\bfc) = \bfy^m \cdot \bfb$.\footnote{The unique responses property holds, for instance, when $F$ is injective, and it holds for the Schnorr and Chaum-Pedersen protocols.}
+
+Also, let $\cH$ be a random oracle mapping $\bbG^{d_{out}} \times \bbG^{d_{out}} \to \bbZ_p$. 
+
+Finally, the NIZK is a pair of algorithms $(\Prove, \Verify)$, which are constructed as follows.\newline
 
 \noindent\underline{$\Prove(\bfx, \bfy)$:}
 \begin{enumerate}
@@ -158,7 +165,7 @@ Let us define the notion of zero-knowledge for NIZKs.
 \begin{definition}[Zero-Knowledge Adversary and Simulator]
     The zero-knowledge adversary $\cA$ is run in one of the following games, $\cG_{\mathsf{Real}}$ or $\cG_{\mathsf{Ideal}}$, and they are not told which one. $\cA$ makes \textit{proof queries} of the form $(\bfx, \bfy) \in \bbZ_p^{d_{in}} \times \bbG^{d_{out}}$, where $F(\bfx) = \bfy$, and \textit{random oracle queries} of the form $(\bfy, \bfb) \in \bbG^{d_{out}} \times \bbG^{d_{out}}$, and finally they output a bit $b$ in order to guess which game they are in.
     
-    In the \textit{real world}, $\cG_{\mathsf{Real}}$, the challenger samples a random oracle $\cH$ and responds to each random oracle query with $\cH(\bfy, \bfb)$. For each proof query $(\bfx, \bfy)$, the challenger responds with $\pi = \Prove(\bfx, \bfy)$.
+    In the \textit{real world}, $\cG_{\mathsf{Real}}$, the challenger samples a random oracle $\cH$ and responds to each random oracle query with $\cH(\bfy, \bfb)$. For each proof query $(\bfx, \bfy)$ such that $F(\bfx) = \bfy$, the challenger responds with $\pi = \Prove(\bfx, \bfy)$.
 
     In the \textit{ideal world}, $\cG_{\mathsf{Ideal}}$, there is a PPT simulator $\cS$ that handles the queries. $\cS$ receives each random oracle query $(\bfy, \bfb)$ and computes the response $\cS.\RO(\bfy, \bfb)$. For each proof query, $(\bfx, \bfy)$ such that $F(\bfx) = \bfy$, $\cS$ only receives $\bfy$ and must compute the response $\cS.\Prove(\bfy)$.
 \end{definition}
@@ -173,7 +180,7 @@ Let us define the notion of zero-knowledge for NIZKs.
 \begin{definition}[Simulation Soundness Game $\cG_{\mathsf{SS}}$]
     The simulation soundness adversary $\cB$ interacts with $\cS$ directly. $\cB$ can make proof queries of the form $\bfy \in \bbG^{d_{out}}$ and receives the response $\cS.\Prove(\bfy)$. $\cB$ can also make random oracle queries of the form $(\bfy, \bfb) \in \bbG^{d_{out}} \times \bbG^{d_{out}}$ and receives the response $\cS.\RO(\bfy, \bfb)$.
 
-    Finally $\cB$ outputs a statement-proof tuple $(\bfy^*, \pi^*)$, which the challenger verifies by computing $\Verify(\bfy^*, \pi^*)$. If $\Verify$ queries the random oracle, the challenger queries $\cS.\RO$. 
+    Finally $\cB$ outputs a statement-proof tuple $(\bfy^*, \pi^*)$, which the challenger verifies by computing $\Verify(\bfy^*, \pi^*)$. If $\Verify$ needs to query the random oracle, then the challenger queries $\cS.\RO$. 
     
     $\cB$ wins $\cG_{\mathsf{SS}}$ if $(\bfy^*, \pi^*)$ was not a previous query-response pair for $\cS.\Prove$, and $\Verify(\bfy^*, \pi^*)$ outputs $\mathsf{accept}$, and $\bfy \notin \mathsf{Im}(F)$ ($\bfy$ is a false statement).
 \end{definition}
