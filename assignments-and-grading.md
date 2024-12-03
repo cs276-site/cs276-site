@@ -74,7 +74,7 @@ We understand that research projects often fail to produce results and that 1 se
 We will have the following checkpoints throughout the semester.
 *   F 9/20: Identify a topic and collaborators (if any).
 *   F 10/25: Submit a research proposal (no more than 3 pages). The proposal should state a clear research goal, review the relevant literature, and argue why this goal is novel and interesting. Furthermore, it should describe the approach that you will take to solving the problem and explain why it could plausibly succeed.
-*   F 12/13: Submit the final project report.
+*   F 12/20: Submit the final project report.
 
 ## Scribe Notes
 Each student will write scribe notes for two lectures. Sign up to scribe lectures [here](https://docs.google.com/spreadsheets/d/174bPvR3db2Uvda138NZWzITQixrS3XxK4Cn-1Ie1gLM/edit?usp=sharing){:target="_blank"}. Your notes are due within 1 week after the lecture you scribed.
