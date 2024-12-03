@@ -1,0 +1,245 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate,comment}
+\usepackage{url}
+\usepackage{color}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{mdframed}
+
+\pagestyle{fancy}
+\setlength{\headheight}{20pt}
+\setlength{\headsep}{20pt}
+\fancyhead[L]{\small{CS 276, Fall 2024}}
+\fancyhead[R]{\small{Prof. Sanjam Garg}}
+
+\newcommand\custombox[2]{%%
+    \fbox{\rule{#1}{0pt}\rule[-0.5ex]{0pt}{#2}}}
+
+\newcommand\answerbox{%%
+    \fbox{\rule{1in}{0pt}\rule[-0.5ex]{0pt}{4ex}}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{assumption}[theorem]{Assumption}
+\newenvironment{solution}{\color{blue}\noindent{\bf Solution}\hspace*{1em}}{\qed\medskip}
+\newcommand{\proof}{\noindent{\bf Proof. }} %% To begin a proof write \proof
+\newcommand{\qed}{\mbox{}\hspace*{\fill}\nolinebreak\mbox{$\rule{0.6em}{0.6em}$}} %%to end your proof write $\qed$.
+\newcommand{\proofsketch}{\noindent{\bf Proof Sketch. }}
+
+\numberwithin{equation}{section}
+
+% mathbf
+\newcommand{\bfA}{\mathbf{A}}
+\newcommand{\bfa}{\mathbf{a}}
+\newcommand{\bfb}{\mathbf{b}}
+\newcommand{\bfc}{\mathbf{c}}
+\newcommand{\bfe}{\mathbf{e}}
+\newcommand{\bfg}{\mathbf{g}}
+\newcommand{\bfh}{\mathbf{h}}
+\newcommand{\bfI}{\mathbf{I}}
+\newcommand{\bfM}{\mathbf{M}}
+\newcommand{\bfm}{\mathbf{m}}
+\newcommand{\bfp}{\mathbf{p}}
+\newcommand{\bfr}{\mathbf{r}}
+\newcommand{\bfs}{\mathbf{s}}
+\newcommand{\bfT}{\mathbf{T}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfx}{\mathbf{x}}
+\newcommand{\bfy}{\mathbf{y}}
+
+% mathbb
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+% mathcal
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+
+% Crypto terms
+\newcommand{\Setup}{\mathsf{Setup}}
+\newcommand{\Gen}{\mathsf{Gen}}
+\newcommand{\Enc}{\mathsf{Enc}}
+\newcommand{\Dec}{\mathsf{Dec}}
+\newcommand{\gen}{\mathsf{Gen}}
+\newcommand{\enc}{\mathsf{Enc}}
+\newcommand{\dec}{\mathsf{Dec}}
+\newcommand{\Sign}{\mathsf{Sign}}
+\newcommand{\sign}{\mathsf{Sign}}
+\newcommand{\Prove}{\mathsf{Prove}}
+\newcommand{\Verify}{\mathsf{Verify}}
+\newcommand{\verify}{\mathsf{Verify}}
+\newcommand{\RO}{\mathsf{RO}}
+\newcommand{\MAC}{\mathsf{MAC}}
+\newcommand{\mac}{\mathsf{Mac}}
+\newcommand{\pk}{\mathsf{pk}}
+\newcommand{\sk}{\mathsf{sk}}
+\newcommand{\mpk}{\mathsf{mpk}}
+\newcommand{\msk}{\mathsf{msk}}
+\newcommand{\ct}{\mathsf{ct}}
+\newcommand{\tr}{\mathsf{tr}}
+\newcommand{\secp}{\lambda}
+
+\newcommand{\Rank}{\mathsf{Rank}}
+\newcommand{\GF}{\mathsf{GF}}
+\newcommand{\msg}{\mathsf{msg}}
+\newcommand{\negl}{\mathsf{negl}}
+\newcommand{\nonnegl}{\mathsf{nonnegl}}
+\newcommand{\st}{\mathsf{st}}
+\newcommand{\adv}{\cA}
+\newcommand{\hyb}{\mathsf{Hyb}}
+\newcommand{\poly}{\mathsf{poly}}
+
+% Math Notation
+\newcommand{\getsr}{\stackrel{\$}{\gets}}
+\newcommand{\bin}{\{0,1\}}
+\newcommand{\bit}{\bin}
+
+\newcommand{\duedate}{Friday December 13th, 2024 at 8:59pm via Gradescope}
+
+\begin{document}
+\section*{CS 276: Homework 10\\ {\small Due Date: \duedate} }
+
+\section{Succinct Arguments from Folding}
+Succinct argument systems are a valuable tool to compress a long witness into a short proof of the same statement. In recent years, folding has become a popular technique to construct succinct argument systems. Each iteration of the folding algorithm halves the length of the witness, and after $\log |w|$ iterations, the witness is constant-sized and can be published directly. 
+
+In this homework, we will use folding to succinctly prove that the inner product of two long vectors is equal to the claimed value. Crucially, the communication complexity of the protocol is $\poly \log n$, where $n$ is the length of each vector, so it is more communication-efficient than publishing the two vectors directly. You are asked to prove lemma \ref{thm:special-soundness}, which is a form of special soundness used in the proof of knowledge soundness.
+
+\subsection{Preliminaries}
+Let $\bbG$ be a cryptographic group of prime order $p$, where $\frac{1}{p} = \negl(\secp)$. Let $n \in \bbN$ be a power of $2$. For any vector $\bfg$ with $n$ components and for any $i \in [n]$, let $\bfg_{[i]} = (g_1, \dots, g_i)$, let $\bfg_L = (g_1, \dots, g_{\frac{n}{2}})$, and let $\bfg_R = (g_{\frac{n}{2}+1}, \dots, g_n)$. 
+
+Let us define four vectors $\bfg = (g_1, \dots, g_{n}) \in \bbG^{n}$, $\bfh = (h_1, \dots, h_{n}) \in \bbG^{n}$, $\bfa = (a_1, \dots, a_n) \in \bbZ_p^{n}$, and $\bfb = (b_1, \dots, b_n) \in \bbZ_p^{n}$. Let the inner product of $\bfa, \bfb$ be $\langle \bfa, \bfb\rangle = \sum_{i \in [n]} a_i \cdot b_i$, and let the component-wise product of $\bfg, \bfh$ be $\bfg * \bfh = (g_1 \cdot h_1, \dots, g_n \cdot h_n)$. Also, let $\bfg^\bfa = \prod_{i \in [n]} g_i^{a_i}$.
+
+Let us make the following hardness assumption, which is a variant of the discrete log assumption.
+\begin{definition}[Discrete Log Relation Assumption]\label{def:discrete-log-relation-assumption}
+    For any PPT adversary $\cA$ and any $n \in \bbN$, the probability that $\cA$ wins the following game is $\negl(\secp)$.
+    \begin{enumerate}
+        \item Sample $(\bfg, \bfh, u) \getsr \bbG^{n} \times \bbG^n \times \bbG$.
+        \item $\cA(\bfg, \bfh, u)$ outputs $(\bfa, \bfb, c) \in \bbZ_p^{n} \times \bbZ_p^n \times \bbZ_p$. 
+        \item $\cA$ wins if $\bfg^{\bfa} \cdot \bfh^\bfb \cdot u^c = 1$ 
+        and $(\bfa, \bfb, c) \neq \mathbf{0}$. $\cA$ loses otherwise.
+    \end{enumerate}
+\end{definition}
+
+\paragraph{The Inner Product Language} Given a commitment $P$ and a scalar $c$, the statement being proved is that there is some witness $(\bfa, \bfb)$ -- committed to by $P$ -- for which $c = \langle \bfa, \bfb \rangle$. Now we will state this more formally.
+
+The following \textit{public parameters} are sampled beforehand: $(\bfg, \bfh, u) \getsr \bbG^{n} \times \bbG^{n} \times \bbG$. Next, an \textit{instance} of the language is any tuple $(P, c) \in \bbG \times \bbZ_p$ such that there exists a \textit{witness} $(\bfa, \bfb) \in \bbZ_p^{n} \times \bbZ_p^n$ such that $c = \langle \bfa, \bfb \rangle$ and $P = \bfg^\bfa \cdot \bfh^\bfb$. We can view $P$ as a binding commitment to $(\bfa, \bfb)$.
+
+\subsection{The Protocol}
+The following protocol $\Pi$ is a succinct argument system for the inner product language defined above.
+
+\begin{enumerate}
+    \item \textbf{Inputs:} The verifier's input is $(\bfg, \bfh, u, P, c)$, and the prover's input is the verifier's input as well as $(\bfa, \bfb)$.
+    \item \textbf{Preprocessing:}
+    \begin{enumerate}
+        \item The verifier samples $x \getsr \bbZ_p \backslash \{0\}$ and sends it to the prover.
+        \item The prover and verifier each compute $u' = u^x$ and $P' = P \cdot u^{x \cdot c}$.        
+    \end{enumerate}
+
+    \item \textbf{Folding:} Let $n$ be the number of components of $\bfg$, and let $n$ be a power of $2$. If $n = 1$, then skip to the \textbf{verification} step. Otherwise, for each $i \in [\lg n]$, do the following:
+\begin{enumerate}
+    \item The prover computes the following:
+    \begin{align*}
+        L &= \bfg_R^{\bfa_L} \cdot \bfh_L^{\bfb_R} \cdot u'^{\langle \bfa_L, \bfb_R\rangle}\\
+        R &= \bfg_L^{\bfa_R} \cdot \bfh_R^{\bfb_L} \cdot u'^{\langle \bfa_R, \bfb_L\rangle}
+    \end{align*}
+    and sends $(L, R)$ to the verifier.
+    \item The verifier samples $y \getsr \bbZ_p \backslash \{0\}$ and sends $y$ to the prover.
+    \item The prover and verifier each compute the following:
+    \begin{align*}
+        \bfg &\gets \bfg_L^{y^{-1}} * \bfg_R^{y}\\
+        \bfh &\gets \bfh_L^{y} * \bfh_R^{y^{-1}}\\
+        P' &\gets P' \cdot L^{y^2} \cdot R^{y^{-2}}
+    \end{align*}
+    \item The prover additionally computes the following:
+    \begin{align*}
+        \bfa &\gets \bfa_L \cdot y + \bfa_R \cdot y^{-1}\\
+        \bfb &\gets \bfb_L \cdot y^{-1} + \bfb_R \cdot y
+    \end{align*}
+\end{enumerate}
+\textit{Note that each iteration of folding halves the length of $\bfg, \bfh, \bfa, \bfb$.}
+
+    \item \textbf{Verification}
+    \begin{enumerate}
+        \item The prover sends $(\bfa, \bfb)$ to the verifier. \textit{By this time, $\bfg, \bfh, \bfa, \bfb$ are scalars.}
+        \item The verifier checks whether:
+        \[P' = \bfg^\bfa \cdot \bfh^\bfb \cdot u'^{\langle \bfa, \bfb \rangle}\]
+        The verifier outputs $1$ (accept) if the check passes and $0$ (reject) if not.
+    \end{enumerate}
+\end{enumerate}
+
+\subsection{Knowledge Soundness}
+
+$\Pi$ satisfies knowledge soundness, assuming the discrete log relation problem is hard (def. \ref{def:discrete-log-relation-assumption}). The proof of knowledge soundness is somewhat involved, so we'll walk through the proof sketch and just ask you to prove a core lemma, which is stated in lemma \ref{thm:special-soundness} below.
+
+\begin{definition}[Knowledge Soundness]\label{def:knowledge-soundness}
+    There exists an extractor $E$ that runs in expected polynomial time such that for any $(P, c) \in \bbG \times \bbZ_p$ and any PPT adversarial prover $\cP^*$, if $\Pr[\langle \cP^*, \cV \rangle(P, c) \to \mathsf{accept}] = \nonnegl(\secp)$, then $\Pr[c = \langle \bfa, \bfb \rangle \land P = \bfg^\bfa \cdot \bfh^\bfb : (\bfa, \bfb) \gets E^{\cP^*}] = \nonnegl(\secp)$ as well.
+\end{definition}
+\begin{theorem}
+    If the discrete log relation assumption holds (def. \ref{def:discrete-log-relation-assumption}), then $\Pi$ satisfies knowledge soundness (def. \ref{def:knowledge-soundness}).
+\end{theorem}
+\proofsketch
+Let us run $\Pi$ with $n=2$ and public inputs $(\bfg, \bfh, u, P, c)$. An accepting transcript for the protocol is a tuple $\tr := (x, L, R, y, \bfa', \bfb')$ for which
+\begin{align*}
+    P \cdot u^{x \cdot c} \cdot L^{y^2} \cdot R^{y^{-2}} &= \left(\bfg_L^{y^{-1}} * \bfg_R^{y}\right)^{\bfa'} \cdot \left(\bfh_L^{y} * \bfh_R^{y^{-1}}\right)^{\bfb'} \cdot u^{x \cdot \langle \bfa', \bfb'\rangle}
+\end{align*}
+
+Given a prover $\cP^*$ that produces an accepting transcript with non-negligible probability, we can rewind the prover several times to obtain 8 accepting transcripts:
+\begin{align*}
+    \tr_{1} &= ({\color{blue}x_1, L_1, R_1}, y_1, \bfa'^1, \bfb'^1)\\
+    \tr_{2} &= ({\color{blue}x_1, L_1, R_1}, y_2, \bfa'^2, \bfb'^2)\\
+    \tr_{3} &= ({\color{blue}x_1, L_1, R_1}, y_3, \bfa'^3, \bfb'^3)\\
+    \tr_{4} &= ({\color{blue}x_1, L_1, R_1}, y_4, \bfa'^4, \bfb'^4)\\
+    \tr_{5} &= ({\color{red}x_2, L_2, R_2}, y_5, \bfa'^5, \bfb'^5)\\
+    \tr_{6} &= ({\color{red}x_2, L_2, R_2}, y_6, \bfa'^6, \bfb'^6)\\
+    \tr_{7} &= ({\color{red}x_2, L_2, R_2}, y_7, \bfa'^7, \bfb'^7)\\
+    \tr_{8} &= ({\color{red}x_2, L_2, R_2}, y_8, \bfa'^8, \bfb'^8)
+\end{align*}
+with the following properties: $x_1 \neq x_2$, and for every $i, j \in [8]$ such that $i \neq j$: $y_i \neq y_j$ and $y_i \neq -y_j$. Lemma \ref{thm:special-soundness} says that from these accepting transcripts, we can extract a valid witness $(\bfa, \bfb)$.
+
+\begin{lemma}[Special Soundness]\label{thm:special-soundness}
+There is a PPT algorithm that takes the accepting transcripts $(\tr_{1}, \dots, \tr_{8})$ defined above, and either wins the discrete log relation game (def. \ref{def:discrete-log-relation-assumption}) or computes a witness $(\bfa, \bfb)$ for which
+\begin{align*}
+    c &= \langle \bfa, \bfb\rangle\\
+    P &= \bfg^\bfa \cdot \bfh^\bfb
+\end{align*}
+\end{lemma}
+\qed
+
+\paragraph{Question:} Prove lemma \ref{thm:special-soundness}.
+
+\vspace{5mm}
+\begin{solution}
+TBD
+\end{solution}
+
+\end{document}
