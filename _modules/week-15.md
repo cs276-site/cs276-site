@@ -10,5 +10,5 @@ Tu 12/03
 : **Final Report**{: .label .label-red } [Instructions](/assets/homework/final-report.pdf)
 
 Th 12/05
-: **Lecture**{: .label .label-green } [Secure Computation](/assets/lecture-notes/collection-F24.pdf)
+: **Lecture**{: .label .label-green } [Obfustopia](/assets/lecture-notes/collection-F24.pdf)
     : 
