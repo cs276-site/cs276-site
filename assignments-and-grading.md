@@ -85,7 +85,7 @@ Each student will write scribe notes for two lectures. Sign up to scribe lecture
 
 3. Use [latexdiff](https://www.overleaf.com/learn/latex/Articles/How_to_use_latexdiff_on_Overleaf){:target="_blank"} to generate a latex document `diff.tex` that illustrates your changes, and add it to the repo. If `diff.tex` already exists in the repo, you may overwrite its contents.
 
-4. [Create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request){:target="_blank"} of your changes. The course staff will review and approve your changes, which will then become part of our [scribe notes on Overleaf](https://www.overleaf.com/read/gtzztzzrdhtb#49cc0c){:target="_blank"}. 
+4. [Create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request){:target="_blank"} of your changes. The course staff will review and approve your changes, which will then become part of our [scribe notes](/assets/lecture-notes/collection-F24.pdf){:target="_blank"}. 
 
 5. Please make any revisions to your notes that the course staff may suggest.
 
